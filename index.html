@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PDF Library with search, categories, favorites, and more">
     <title>PDF Library</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="alternate" type="application/rss+xml" title="PDF Library Updates" href="feed.xml">
@@ -63,6 +64,29 @@
             min-height: 100vh;
             padding-bottom: 2rem;
             transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Accessibility: Focus styles */
+        *:focus {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        /* Skip to main content link for accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--primary);
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            border-radius: 4px;
+            z-index: 1000;
+        }
+
+        .skip-link:focus {
+            top: 6px;
         }
 
         header {
@@ -435,7 +459,7 @@
             min-width: 200px;
         }
 
-        .upload-input input {
+        .upload-input input, .upload-input select {
             width: 100%;
             padding: 0.8rem;
             border: 1px solid var(--input-border);
@@ -455,6 +479,37 @@
             font-size: 2rem;
             color: var(--primary);
             margin-bottom: 1rem;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Error state */
+        .error-state {
+            text-align: center;
+            padding: 3rem;
+            grid-column: 1 / -1;
+        }
+
+        .error-state i {
+            font-size: 4rem;
+            color: var(--danger);
+            margin-bottom: 1.5rem;
+        }
+
+        .error-state h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .error-state p {
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto;
         }
 
         footer {
@@ -464,6 +519,7 @@
             font-size: 0.9rem;
         }
 
+        /* Responsive Design */
         @media (max-width: 768px) {
             .header-content {
                 padding: 0 1rem;
@@ -491,9 +547,42 @@
             .pdf-grid {
                 grid-template-columns: 1fr;
             }
+
+            .pagination {
+                flex-wrap: wrap;
+            }
+
+            .page-btn {
+                min-width: 40px;
+                padding: 0.4rem 0.6rem;
+                font-size: 0.9rem;
+            }
         }
 
-        /* Performance: Lazy loading */
+        @media (max-width: 480px) {
+            header {
+                padding: 1rem;
+            }
+
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+
+            .search-container input {
+                padding: 0.7rem 0.8rem 0.7rem 2.5rem;
+                font-size: 0.9rem;
+            }
+
+            .pdf-actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        /* Performance: Smooth animations */
         .pdf-card {
             opacity: 0;
             transform: translateY(20px);
@@ -507,38 +596,63 @@
             }
         }
 
-        /* Critical CSS for initial render */
-        .critical-hidden {
-            display: none !important;
+        /* Reduced motion preference */
+        @media (prefers-reduced-motion: reduce) {
+            .pdf-card {
+                animation: none;
+                opacity: 1;
+                transform: none;
+            }
+
+            .loading i {
+                animation: none;
+            }
+        }
+
+        /* Accessibility: Screen reader only */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
     </style>
 </head>
 <body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <header>
         <div class="header-content">
             <div class="logo-container">
-                <div class="logo">
-                    <i class="fas fa-file-pdf"></i>
+                <div class="logo" role="banner">
+                    <i class="fas fa-file-pdf" aria-hidden="true"></i>
                     <h1>PDF Library</h1>
                 </div>
-                <button class="theme-toggle" id="themeToggle">
-                    <i class="fas fa-moon"></i>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
                 </button>
             </div>
             <div class="search-container">
-                <i class="fas fa-search"></i>
-                <input type="text" id="searchInput" placeholder="Search PDFs by title, description, or category...">
+                <i class="fas fa-search" aria-hidden="true"></i>
+                <input type="text" id="searchInput" placeholder="Search PDFs by title, description, or category..."
+                       aria-label="Search PDFs">
             </div>
         </div>
     </header>
 
-    <div class="controls">
+    <div class="controls" role="navigation" aria-label="Filters and sorting">
         <div class="filters" id="filtersContainer">
             <!-- Filters will be generated dynamically -->
         </div>
         <div class="sort-controls">
             <span class="sort-label">Sort by:</span>
-            <select class="sort-select" id="sortSelect">
+            <select class="sort-select" id="sortSelect" aria-label="Sort PDFs by">
                 <option value="title">Title</option>
                 <option value="date">Date</option>
                 <option value="size">Size</option>
@@ -547,33 +661,36 @@
     </div>
 
     <div class="container">
-        <div class="stats">
+        <div class="stats" role="status">
             <div>
-                <strong id="total-count">0</strong> PDFs available
+                <strong id="total-count" aria-live="polite">0</strong> PDFs available
                 <span id="favorites-count" style="margin-left: 10px; display: none;">
                     (<span id="fav-count">0</span> favorites)
                 </span>
             </div>
             <div>
-                <i class="fas fa-download"></i> All files are free to download
+                <i class="fas fa-download" aria-hidden="true"></i> All files are free to download
             </div>
         </div>
 
         <!-- Upload section (will be shown if admin mode is enabled) -->
-        <div class="upload-section" id="uploadSection">
-            <h3><i class="fas fa-upload"></i> Upload New PDF</h3>
+        <div class="upload-section" id="uploadSection" aria-live="polite">
+            <h3><i class="fas fa-upload" aria-hidden="true"></i> Upload New PDF</h3>
             <p style="margin-bottom: 1rem; color: var(--text-secondary);">
                 Note: File upload requires backend integration. This is a placeholder for demonstration.
             </p>
             <div class="upload-form">
                 <div class="upload-input">
-                    <input type="file" id="pdfFile" accept=".pdf" disabled>
+                    <label for="pdfFile" class="sr-only">PDF File</label>
+                    <input type="file" id="pdfFile" accept=".pdf" disabled aria-label="Select PDF file">
                 </div>
                 <div class="upload-input">
-                    <input type="text" id="pdfTitle" placeholder="PDF Title" disabled>
+                    <label for="pdfTitle" class="sr-only">PDF Title</label>
+                    <input type="text" id="pdfTitle" placeholder="PDF Title" disabled aria-label="PDF title">
                 </div>
                 <div class="upload-input">
-                    <select id="pdfCategory" disabled>
+                    <label for="pdfCategory" class="sr-only">PDF Category</label>
+                    <select id="pdfCategory" disabled aria-label="PDF category">
                         <option value="manual">User Manual</option>
                         <option value="guide">Guide</option>
                         <option value="report">Report</option>
@@ -581,30 +698,33 @@
                         <option value="other">Other</option>
                     </select>
                 </div>
-                <button class="btn btn-primary" id="uploadBtn" disabled>
-                    <i class="fas fa-upload"></i> Upload
+                <button class="btn btn-primary" id="uploadBtn" disabled aria-label="Upload PDF">
+                    <i class="fas fa-upload" aria-hidden="true"></i> Upload
                 </button>
             </div>
         </div>
 
-        <div class="pdf-grid" id="pdfGrid">
-            <div class="loading">
-                <i class="fas fa-spinner fa-spin"></i>
-                <p>Loading PDFs...</p>
+        <main id="main-content">
+            <div class="pdf-grid" id="pdfGrid" role="region" aria-label="PDF library">
+                <!-- Loading state will be shown here -->
+                <div class="loading" role="status" aria-live="polite">
+                    <i class="fas fa-spinner" aria-hidden="true"></i>
+                    <p>Loading PDFs...</p>
+                </div>
             </div>
-        </div>
 
-        <div class="pagination" id="paginationContainer">
-            <!-- Pagination will be generated here -->
-        </div>
+            <div class="pagination" id="paginationContainer" role="navigation" aria-label="Pagination">
+                <!-- Pagination will be generated here -->
+            </div>
+        </main>
     </div>
 
-    <footer>
+    <footer role="contentinfo">
         <p>PDF Library &copy; <span id="currentYear">2023</span> | Built with GitHub Pages</p>
         <p>All PDFs are provided for educational and reference purposes only.</p>
         <p>
-            <a href="feed.xml" style="color: var(--primary); text-decoration: none;">
-                <i class="fas fa-rss"></i> RSS Feed
+            <a href="feed.xml" style="color: var(--primary); text-decoration: none;" aria-label="RSS Feed">
+                <i class="fas fa-rss" aria-hidden="true"></i> RSS Feed
             </a>
         </p>
     </footer>
@@ -647,10 +767,12 @@
             itemsPerPage: 12,
             activeCategory: 'all',
             searchTerm: '',
-            sortBy: 'title'
+            sortBy: 'title',
+            isLoading: true,
+            error: null
         };
 
-        // DOM Elements (will be populated after DOM loads)
+        // DOM Elements
         let pdfGrid, searchInput, filtersContainer, sortSelect, themeToggle, totalCount, favCount, favoritesCountEl;
         let paginationContainer, uploadSection;
 
@@ -677,22 +799,24 @@
                 renderPDFs();
                 setupEventListeners();
                 initTheme();
+            }).catch(error => {
+                console.error('Failed to load PDFs:', error);
+                state.error = 'Failed to load PDF data. Please try again later.';
+                renderErrorState();
             });
         }
 
-        // Load PDFs with performance optimization
+        // Load PDFs with performance optimization and error handling
         async function loadPDFs() {
             try {
-                // Show loading state
-                pdfGrid.innerHTML = `
-                    <div class="loading">
-                        <i class="fas fa-spinner fa-spin"></i>
-                        <p>Loading PDFs...</p>
-                    </div>
-                `;
+                state.isLoading = true;
+                state.error = null;
 
-                // Simulate network delay for better UX
-                await new Promise(resolve => setTimeout(resolve, 300));
+                // Show loading state
+                renderLoadingState();
+
+                // Simulate network delay for better UX (remove in production)
+                await new Promise(resolve => setTimeout(resolve, 500));
 
                 // Try to load from pdfs.json
                 const response = await fetch('pdfs.json?_=' + Date.now());
@@ -715,13 +839,39 @@
 
                 totalCount.textContent = state.allPDFs.length;
                 updateFavoritesCount();
+                state.isLoading = false;
 
             } catch (error) {
-                console.warn('Could not load pdfs.json, using sample data:', error);
+                console.warn('Could not load pdfs.json, using sample ', error);
                 state.allPDFs = generateSampleData();
                 totalCount.textContent = state.allPDFs.length;
                 updateFavoritesCount();
+                state.isLoading = false;
             }
+        }
+
+        // Render loading state
+        function renderLoadingState() {
+            pdfGrid.innerHTML = `
+                <div class="loading" role="status" aria-live="polite">
+                    <i class="fas fa-spinner" aria-hidden="true"></i>
+                    <p>Loading PDFs...</p>
+                </div>
+            `;
+        }
+
+        // Render error state
+        function renderErrorState() {
+            pdfGrid.innerHTML = `
+                <div class="error-state" role="alert" aria-live="assertive">
+                    <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+                    <h3>Oops! Something went wrong</h3>
+                    <p>${state.error || 'Failed to load PDF data. Please refresh the page and try again.'}</p>
+                    <button class="btn btn-primary" onclick="location.reload()" style="margin-top: 1rem;">
+                        <i class="fas fa-redo" aria-hidden="true"></i> Try Again
+                    </button>
+                </div>
+            `;
         }
 
         // Generate sample data
@@ -861,7 +1011,9 @@
         function renderFilters() {
             const categories = getUniqueCategories(state.allPDFs);
             filtersContainer.innerHTML = categories.map(category => `
-                <button class="filter-btn ${category === state.activeCategory ? 'active' : ''}" data-category="${category}">
+                <button class="filter-btn ${category === state.activeCategory ? 'active' : ''}"
+                        data-category="${category}"
+                        aria-pressed="${category === state.activeCategory}">
                     ${formatCategory(category)}
                 </button>
             `).join('');
@@ -888,24 +1040,20 @@
             const startIndex = (state.currentPage - 1) * state.itemsPerPage;
             const paginatedPDFs = filteredPDFs.slice(startIndex, startIndex + state.itemsPerPage);
 
-            // Render PDF cards
+            // Render PDF cards or empty state
             if (paginatedPDFs.length === 0) {
-                pdfGrid.innerHTML = `
-                    <div class="empty-state">
-                        <i class="fas fa-file-search"></i>
-                        <h3>No PDFs found</h3>
-                        <p>Try adjusting your search terms or filter selection</p>
-                    </div>
-                `;
+                renderEmptyState();
             } else {
                 pdfGrid.innerHTML = paginatedPDFs.map(pdf => `
-                    <div class="pdf-card" data-category="${pdf.category}" data-title="${pdf.title}" data-date="${pdf.date}" data-size="${pdf.size}">
+                    <article class="pdf-card" data-category="${pdf.category}" data-title="${pdf.title}" data-date="${pdf.date}" data-size="${pdf.size}">
                         <div class="pdf-icon">
                             <button class="favorite-btn ${state.favorites.has(pdf.id) ? 'favorited' : ''}"
-                                    data-pdf-id="${pdf.id}" title="Add to favorites">
-                                <i class="fas fa-star"></i>
+                                    data-pdf-id="${pdf.id}"
+                                    title="Add to favorites"
+                                    aria-label="${state.favorites.has(pdf.id) ? 'Remove from favorites' : 'Add to favorites'}">
+                                <i class="fas fa-star" aria-hidden="true"></i>
                             </button>
-                            <i class="fas fa-file-pdf"></i>
+                            <i class="fas fa-file-pdf" aria-hidden="true"></i>
                         </div>
                         <div class="pdf-content">
                             <h3 class="pdf-title">${escapeHtml(pdf.title)}</h3>
@@ -916,15 +1064,17 @@
                             <span class="pdf-category">${formatCategory(pdf.category)}</span>
                             <p class="pdf-description">${escapeHtml(pdf.description)}</p>
                             <div class="pdf-actions">
-                                <a href="${pdf.downloadUrl}" class="btn btn-primary download-btn" data-title="${pdf.title}" download>
-                                    <i class="fas fa-download"></i> Download
+                                <a href="${pdf.downloadUrl}" class="btn btn-primary download-btn" data-title="${pdf.title}" download
+                                   aria-label="Download ${pdf.title}">
+                                    <i class="fas fa-download" aria-hidden="true"></i> Download
                                 </a>
-                                <button class="btn btn-outline preview-btn" data-url="${pdf.downloadUrl}" data-title="${pdf.title}">
-                                    <i class="fas fa-eye"></i> Preview
+                                <button class="btn btn-outline preview-btn" data-url="${pdf.downloadUrl}" data-title="${pdf.title}"
+                                        aria-label="Preview ${pdf.title}">
+                                    <i class="fas fa-eye" aria-hidden="true"></i> Preview
                                 </button>
                             </div>
                         </div>
-                    </div>
+                    </article>
                 `).join('');
             }
 
@@ -933,6 +1083,17 @@
 
             // Add event listeners to new elements
             addPDFEventListeners();
+        }
+
+        // Render empty state
+        function renderEmptyState() {
+            pdfGrid.innerHTML = `
+                <div class="empty-state" role="status" aria-live="polite">
+                    <i class="fas fa-file-search" aria-hidden="true"></i>
+                    <h3>No PDFs found</h3>
+                    <p>Try adjusting your search terms or filter selection</p>
+                </div>
+            `;
         }
 
         // Render pagination controls
@@ -954,33 +1115,34 @@
 
             // Previous button
             if (state.currentPage > 1) {
-                paginationHTML += `<button class="page-btn" data-page="${state.currentPage - 1}">Previous</button>`;
+                paginationHTML += `<button class="page-btn" data-page="${state.currentPage - 1}" aria-label="Previous page">Previous</button>`;
             }
 
             // First page
             if (startPage > 1) {
-                paginationHTML += `<button class="page-btn" data-page="1">1</button>`;
+                paginationHTML += `<button class="page-btn" data-page="1" aria-label="Go to page 1">1</button>`;
                 if (startPage > 2) {
-                    paginationHTML += `<span class="page-btn" style="background: none; border: none;">...</span>`;
+                    paginationHTML += `<span class="page-btn" style="background: none; border: none;" aria-hidden="true">...</span>`;
                 }
             }
 
             // Visible pages
             for (let i = startPage; i <= endPage; i++) {
-                paginationHTML += `<button class="page-btn ${i === state.currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
+                paginationHTML += `<button class="page-btn ${i === state.currentPage ? 'active' : ''}" data-page="${i}"
+                                         aria-label="Go to page ${i}" aria-current="${i === state.currentPage ? 'page' : false}">${i}</button>`;
             }
 
             // Last page
             if (endPage < totalPages) {
                 if (endPage < totalPages - 1) {
-                    paginationHTML += `<span class="page-btn" style="background: none; border: none;">...</span>`;
+                    paginationHTML += `<span class="page-btn" style="background: none; border: none;" aria-hidden="true">...</span>`;
                 }
-                paginationHTML += `<button class="page-btn" data-page="${totalPages}">${totalPages}</button>`;
+                paginationHTML += `<button class="page-btn" data-page="${totalPages}" aria-label="Go to page ${totalPages}">${totalPages}</button>`;
             }
 
             // Next button
             if (state.currentPage < totalPages) {
-                paginationHTML += `<button class="page-btn" data-page="${state.currentPage + 1}">Next</button>`;
+                paginationHTML += `<button class="page-btn" data-page="${state.currentPage + 1}" aria-label="Next page">Next</button>`;
             }
 
             paginationContainer.innerHTML = paginationHTML;
@@ -1005,7 +1167,7 @@
                 });
             });
 
-            // Preview buttons (placeholder - PDF.js would be loaded on demand)
+            // Preview buttons (placeholder)
             document.querySelectorAll('.preview-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
                     alert('PDF preview would open here. For performance, PDF.js is not loaded by default.');
@@ -1015,7 +1177,7 @@
 
         // Setup event listeners
         function setupEventListeners() {
-            // Search
+            // Search with debounced input
             searchInput.addEventListener('input', debounce((e) => {
                 state.searchTerm = e.target.value.toLowerCase();
                 state.currentPage = 1;
@@ -1027,8 +1189,12 @@
                 if (e.target.classList.contains('filter-btn')) {
                     state.activeCategory = e.target.dataset.category;
                     state.currentPage = 1;
-                    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                    document.querySelectorAll('.filter-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                        btn.setAttribute('aria-pressed', 'false');
+                    });
                     e.target.classList.add('active');
+                    e.target.setAttribute('aria-pressed', 'true');
                     renderPDFs();
                 }
             });
@@ -1089,7 +1255,8 @@
             document.body.classList.toggle('dark-theme');
             const isDark = document.body.classList.contains('dark-theme');
             localStorage.setItem('darkMode', isDark);
-            themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            themeToggle.innerHTML = isDark ? '<i class="fas fa-sun" aria-hidden="true"></i>' : '<i class="fas fa-moon" aria-hidden="true"></i>';
+            themeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
         }
 
         // Initialize theme
@@ -1097,11 +1264,14 @@
             const savedTheme = localStorage.getItem('darkMode') === 'true';
             if (savedTheme) {
                 document.body.classList.add('dark-theme');
-                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                themeToggle.innerHTML = '<i class="fas fa-sun" aria-hidden="true"></i>';
+                themeToggle.setAttribute('aria-label', 'Switch to light mode');
+            } else {
+                themeToggle.setAttribute('aria-label', 'Switch to dark mode');
             }
         }
 
-        // Debounce function
+        // Debounce function for performance
         function debounce(func, wait) {
             let timeout;
             return function executedFunction(...args) {
@@ -1120,25 +1290,6 @@
             div.textContent = text;
             return div.innerHTML;
         }
-
-        // RSS Feed Generation (static file approach)
-        // Create a feed.xml file in your root directory with this structure:
-        /*
-        <?xml version="1.0" encoding="UTF-8"?>
-        <rss version="2.0">
-        <channel>
-            <title>PDF Library Updates</title>
-            <link>https://yourusername.github.io/your-repo/</link>
-            <description>New PDFs added to the library</description>
-            <item>
-                <title>New PDF: Document Title</title>
-                <link>https://yourusername.github.io/your-repo/</link>
-                <description>Document description</description>
-                <pubDate>Mon, 01 Jan 2023 00:00:00 GMT</pubDate>
-            </item>
-        </channel>
-        </rss>
-        */
     </script>
 </body>
 </html>
