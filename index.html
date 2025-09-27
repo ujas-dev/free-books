@@ -18,20 +18,20 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yourusername.github.io/your-repo/">
+    <meta property="og:url" content="https://ujas-dev.github.io/free-books/">
     <meta property="og:title" content="Document Library | PDF, Office & Markdown Support">
     <meta property="og:description" content="Comprehensive library with PDF, Office, and Markdown document support including Mermaid diagrams.">
-    <meta property="og:image" content="https://yourusername.github.io/your-repo/thumbnail.jpg">
+    <meta property="og:image" content="https://ujas-dev.github.io/free-books/thumbnail.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://yourusername.github.io/your-repo/">
+    <meta property="twitter:url" content="https://ujas-dev.github.io/free-books/">
     <meta property="twitter:title" content="Document Library | PDF, Office & Markdown Support">
     <meta property="twitter:description" content="Comprehensive library with PDF, Office, and Markdown document support including Mermaid diagrams.">
-    <meta property="twitter:image" content="https://yourusername.github.io/your-repo/thumbnail.jpg">
+    <meta property="twitter:image" content="https://ujas-dev.github.io/free-books/thumbnail.jpg">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://yourusername.github.io/your-repo/">
+    <link rel="canonical" href="https://ujas-dev.github.io/free-books/">
 
     <!-- RSS Feed -->
     <link rel="alternate" type="application/rss+xml" title="Document Library Updates" href="feed.xml">
@@ -56,7 +56,7 @@
         "@type": "DigitalDocumentLibrary",
         "name": "Document Library",
         "description": "Comprehensive library with PDF, Office, and Markdown document support including Mermaid diagrams.",
-        "url": "https://yourusername.github.io/your-repo/",
+        "url": "https://ujas-dev.github.io/free-books/",
         "sameAs": [
             "https://github.com/yourusername/your-repo"
         ],
@@ -76,7 +76,7 @@
     <header>
         <div class="header-content">
             <div class="logo-container">
-                <a href="/" class="logo" role="banner">
+                <a href="https://yourusername.github.io/your-repo/" class="logo" role="banner">
                     <i class="fas fa-file-alt" aria-hidden="true"></i>
                     <h1>Document Library</h1>
                 </a>
@@ -233,9 +233,6 @@
             <a href="sitemap.xml" style="color:#4361ee;text-decoration:none;" aria-label="Sitemap">
                 <i class="fas fa-sitemap"></i> Sitemap
             </a>
-        </p>
-        <p style="margin-top: 10px; font-size: 0.8rem; color: #6c757d;">
-            <strong>Important:</strong> For RSS and Sitemap to work, you must create these files in your repository root.
         </p>
     </footer>
 
@@ -784,19 +781,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
     <title>Document Library Updates</title>
-    <link>https://yourusername.github.io/your-repo/</link>
+    <link>https://ujas-dev.github.io/free-books/</link>
     <description>New documents and updates to the document library</description>
     <language>en-us</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
-    <atom:link href="https://yourusername.github.io/your-repo/feed.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="https://ujas-dev.github.io/free-books/feed.xml" rel="self" type="application/rss+xml"/>
 
     ${state.allDocuments.slice(0, 10).map(doc => `
     <item>
         <title>${escapeXml(doc.title)} v${doc.version}</title>
-        <link>https://yourusername.github.io/your-repo/</link>
+        <link>https://ujas-dev.github.io/free-books/</link>
         <description>${escapeXml(doc.description)} (Last updated: ${doc.lastUpdated})</description>
         <pubDate>${new Date(doc.lastUpdated).toUTCString()}</pubDate>
-        <guid>https://yourusername.github.io/your-repo/#${doc.id}</guid>
+        <guid>https://ujas-dev.github.io/free-books/#${doc.id}</guid>
     </item>
     `).join('')}
 </channel>
@@ -815,14 +812,14 @@
             const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://yourusername.github.io/your-repo/</loc>
+        <loc>https://ujas-dev.github.io/free-books/</loc>
         <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     ${state.allDocuments.map(doc => `
     <url>
-        <loc>https://yourusername.github.io/your-repo/</loc>
+        <loc>https://ujas-dev.github.io/free-books/</loc>
         <lastmod>${doc.lastUpdated}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>

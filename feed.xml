@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+    <title>Document Library Updates</title>
+    <link>https://ujas-dev.github.io/free-books/</link>
+    <description>New documents and updates to the document library</description>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 27 Sep 2025 21:06:21 GMT</lastBuildDate>
+    <atom:link href="https://ujas-dev.github.io/free-books/feed.xml" rel="self" type="application/rss+xml"/>
+
+
+    <item>
+        <title>User Manual - XYZ Device v2.1</title>
+        <link>https://ujas-dev.github.io/free-books/</link>
+        <description>Complete user manual for the XYZ device with setup instructions and troubleshooting. (Last updated: 2023-08-20)</description>
+        <pubDate>Sun, 20 Aug 2023 00:00:00 GMT</pubDate>
+        <guid>https://ujas-dev.github.io/free-books/#doc-1</guid>
+    </item>
+
+    <item>
+        <title>Web Development Guide v1.5</title>
+        <link>https://ujas-dev.github.io/free-books/</link>
+        <description>Comprehensive guide covering HTML, CSS, and JavaScript fundamentals. (Last updated: 2023-07-15)</description>
+        <pubDate>Sat, 15 Jul 2023 00:00:00 GMT</pubDate>
+        <guid>https://ujas-dev.github.io/free-books/#doc-2</guid>
+    </item>
+
+    <item>
+        <title>Q2 2023 Financial Report v1.0</title>
+        <link>https://ujas-dev.github.io/free-books/</link>
+        <description>Quarterly financial performance and analysis in Excel format. (Last updated: 2023-07-15)</description>
+        <pubDate>Sat, 15 Jul 2023 00:00:00 GMT</pubDate>
+        <guid>https://ujas-dev.github.io/free-books/#doc-3</guid>
+    </item>
+
+    <item>
+        <title>Machine Learning Presentation v1.2</title>
+        <link>https://ujas-dev.github.io/free-books/</link>
+        <description>PowerPoint presentation on neural network optimization techniques. (Last updated: 2023-08-10)</description>
+        <pubDate>Thu, 10 Aug 2023 00:00:00 GMT</pubDate>
+        <guid>https://ujas-dev.github.io/free-books/#doc-4</guid>
+    </item>
+
+    <item>
+        <title>Mediterranean Recipes v1.1</title>
+        <link>https://ujas-dev.github.io/free-books/</link>
+        <description>Collection of authentic Mediterranean recipes in plain text format. (Last updated: 2023-06-30)</description>
+        <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+        <guid>https://ujas-dev.github.io/free-books/#doc-5</guid>
+    </item>
+
+    <item>
+        <title>JavaScript Patterns v2.0</title>
+        <link>https://ujas-dev.github.io/free-books/</link>
+        <description>Deep dive into advanced JavaScript design patterns and best practices. (Last updated: 2023-08-05)</description>
+        <pubDate>Sat, 05 Aug 2023 00:00:00 GMT</pubDate>
+        <guid>https://ujas-dev.github.io/free-books/#doc-6</guid>
+    </item>
+
+    <item>
+        <title>System Architecture Documentation v1.3</title>
+        <link>https://ujas-dev.github.io/free-books/</link>
+        <description>Complete system architecture with Mermaid diagrams showing component relationships. (Last updated: 2023-08-25)</description>
+        <pubDate>Fri, 25 Aug 2023 00:00:00 GMT</pubDate>
+        <guid>https://ujas-dev.github.io/free-books/#doc-7</guid>
+    </item>
+
+</channel>
+</rss>
