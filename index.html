@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Favicon for all devices -->
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#4361ee">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Document Library">
 
     <!-- Rich Content SEO Meta Tags -->
     <meta name="description" content="Document Library with PDF, Office, and Markdown support. Preview documents, manage favorites, and stay updated with RSS feeds.">
@@ -32,8 +36,6 @@
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://ujas-dev.github.io/free-books/">
-
-    <!-- RSS Feed -->
     <link rel="alternate" type="application/rss+xml" title="Document Library Updates" href="feed.xml">
 
     <title>Document Library | PDF, Office & Markdown Support</title>
@@ -41,15 +43,13 @@
     <!-- Critical CSS Inlined -->
     <style>
         /* Critical CSS for initial render */
-        *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;line-height:1.6;color:#212529;background-color:#f5f7ff;min-height:100vh;padding-bottom:2rem;transition:background-color .3s ease,color .3s ease}header{background:linear-gradient(135deg,#4361ee,#3f37c9);color:white;padding:1.5rem 2rem;box-shadow:0 4px 6px rgba(0,0,0,.1);position:sticky;top:0;z-index:100}.header-content{max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:1rem}.logo-container{display:flex;justify-content:space-between;align-items:center}.logo{display:flex;align-items:center;gap:1rem;text-decoration:none;color:white}.logo i{font-size:2.5rem}.logo h1{font-size:2rem;font-weight:700}.theme-toggle,.view-mode-toggle,.sort-direction-toggle{background:rgba(255,255,255,.2);border:none;width:40px;height:40px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s ease;margin-left:0.5rem}.theme-toggle:hover,.view-mode-toggle:hover,.sort-direction-toggle:hover{background:rgba(255,255,255,.3)}.search-container{position:relative;max-width:600px;width:100%}.search-container input{width:100%;padding:.8rem 1rem .8rem 3rem;border-radius:50px;border:1px solid #dee2e6;background-color:#f8f9fa;color:#212529;font-size:1rem;box-shadow:0 4px 6px rgba(0,0,0,.1);transition:all .3s ease}.search-container input::placeholder{color:#6c757d}.search-container input:focus{outline:none;box-shadow:0 0 0 3px rgba(67,97,238,.3)}.search-container i{position:absolute;left:1.2rem;top:50%;transform:translateY(-50%);color:#6c757d}.controls{display:flex;flex-wrap:wrap;gap:1rem;padding:1rem 2rem;background-color:white;box-shadow:0 4px 6px rgba(0,0,0,.1);margin-top:1rem}.filters{display:flex;flex-wrap:wrap;gap:.8rem;flex:1;min-width:300px}.sort-controls{display:flex;gap:.8rem;align-items:center}.sort-label{font-weight:600;white-space:nowrap}.filter-btn,.sort-select{padding:.5rem 1rem;background-color:#f8f9fa;border:1px solid #dee2e6;border-radius:50px;cursor:pointer;transition:all .3s ease;font-weight:600;color:#212529}.sort-select{border-radius:8px;padding:.5rem;min-width:120px}.filter-btn:hover,.filter-btn.active{background-color:#4361ee;color:white;border-color:#4361ee}.container{max-width:1200px;margin:2rem auto;padding:0 1.5rem}.stats{display:flex;justify-content:space-between;margin-bottom:1.5rem;padding:1rem;background:white;border-radius:8px;box-shadow:0 4px 6px rgba(0,0,0,.1);color:#212529}.pdf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem}.pdf-list{display:flex;flex-direction:column;gap:1rem}.pdf-card{background:white;border-radius:8px;overflow:hidden;box-shadow:0 4px 6px rgba(0,0,0,.1);transition:all .3s ease;display:flex;flex-direction:column;height:100%}.pdf-card:hover{transform:translateY(-5px);box-shadow:0 10px 20px rgba(0,0,0,.15)}.pdf-icon{background:linear-gradient(135deg,#4361ee,#4cc9f0);padding:1.5rem;text-align:center;color:white;position:relative}.favorite-btn{position:absolute;top:8px;right:8px;background:rgba(255,255,255,.3);border:none;width:24px;height:24px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;color:white;font-size:0.7rem;z-index:10}.favorite-btn.favorited{background:rgba(255,215,0,.8);color:#333}.pdf-icon i{font-size:3rem}.pdf-content{padding:1.2rem;flex-grow:1;display:flex;flex-direction:column}.pdf-title{font-size:1.2rem;font-weight:700;margin-bottom:.5rem;color:#212529;display:flex;align-items:center;gap:0.5rem}.pdf-meta{display:flex;justify-content:space-between;margin:.5rem 0;font-size:.85rem;color:#6c757d}.pdf-category{display:inline-block;background-color:#f8f9fa;padding:.2rem .6rem;border-radius:50px;font-size:.8rem;font-weight:600;color:#212529}.pdf-description{color:#6c757d;font-size:.9rem;margin:.8rem 0;flex-grow:1}.pdf-actions{display:flex;gap:.5rem;margin-top:auto;flex-wrap:wrap}.btn{padding:.6rem 1rem;border-radius:8px;font-weight:600;cursor:pointer;transition:all .3s ease;text-align:center;flex:1;text-decoration:none;display:inline-block;border:1px solid transparent;min-width:80px;justify-content:center}.btn-primary{background-color:#4361ee;color:white}.btn-primary:hover{background-color:#3f37c9}.btn-outline{background-color:transparent;color:#4361ee;border-color:#4361ee}.btn-outline:hover{background-color:#f8f9fa}.empty-state{text-align:center;padding:3rem;grid-column:1/-1}.empty-state i{font-size:4rem;color:#e9ecef;margin-bottom:1.5rem}.empty-state h3{font-size:1.5rem;margin-bottom:1rem;color:#212529}.empty-state p{color:#6c757d;max-width:500px;margin:0 auto}.pagination{display:flex;justify-content:center;gap:.5rem;margin-top:2rem}.page-btn{padding:.5rem 1rem;background-color:#f8f9fa;border:1px solid #dee2e6;color:#212529;cursor:pointer;border-radius:8px;transition:all .3s ease}.page-btn.active{background-color:#4361ee;color:white;border-color:#4361ee}.page-btn:hover:not(.active){background-color:#f8f9fa}.upload-section{background:white;padding:2rem;border-radius:8px;margin:2rem 0;box-shadow:0 4px 6px rgba(0,0,0,.1);display:none}.upload-section h3{margin-bottom:1rem;color:#212529}.upload-form{display:flex;gap:1rem;flex-wrap:wrap}.upload-input{flex:1;min-width:200px}.upload-input input,.upload-input select{width:100%;padding:.8rem;border:1px solid #dee2e6;border-radius:8px;background-color:#f8f9fa;color:#212529}.loading{text-align:center;padding:2rem;grid-column:1/-1}.loading i{font-size:2rem;color:#4361ee;margin-bottom:1rem;animation:spin 1s linear infinite}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}.error-state{text-align:center;padding:3rem;grid-column:1/-1}.error-state i{font-size:4rem;color:#f87171;margin-bottom:1.5rem}.error-state h3{font-size:1.5rem;margin-bottom:1rem;color:#212529}.error-state p{color:#6c757d;max-width:500px;margin:0 auto}footer{text-align:center;padding:2rem;color:#6c757d;font-size:.9rem}@media (max-width:768px){.header-content{padding:0 1rem}.controls{padding:1rem;flex-direction:column}.filters{width:100%}.sort-controls{width:100%;justify-content:space-between}.stats{flex-direction:column;gap:.8rem}.pdf-grid{grid-template-columns:1fr}.pagination{flex-wrap:wrap}.page-btn{min-width:40px;padding:.4rem .6rem;font-size:.9rem}}@media (max-width:480px){header{padding:1rem}.logo h1{font-size:1.5rem}.search-container input{padding:.7rem .8rem .7rem 2.5rem;font-size:.9rem}.pdf-actions{flex-direction:column}.btn{width:100%}}.pdf-card{opacity:0;transform:translateY(20px);animation:fadeInUp .6s ease-out forwards}@keyframes fadeInUp{to{opacity:1;transform:translateY(0)}}@media (prefers-reduced-motion:reduce){.pdf-card{animation:none;opacity:1;transform:none}.loading i{animation:none}}.skip-link{position:absolute;top:-40px;left:6px;background:#4361ee;color:white;padding:8px;text-decoration:none;border-radius:4px;z-index:1000}.skip-link:focus{top:6px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.share-buttons{display:flex;gap:0.8rem;margin-top:1.5rem;justify-content:center}.share-btn{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;border:none;cursor:pointer;transition:all .3s ease;box-shadow:0 2px 4px rgba(0,0,0,0.1)}.share-btn:hover{transform:scale(1.1)}.share-facebook{background:#3b5998;color:white}.share-twitter{background:#1da1f2;color:white}.share-linkedin{background:#0077b5;color:white}.share-whatsapp{background:#25d366;color:white}.share-copy{background:#6c757d;color:white}.advanced-filters{display:flex;flex-wrap:wrap;gap:0.8rem;margin-top:0.5rem;padding:0.5rem;background:#f8f9fa;border-radius:8px}.filter-multi{position:relative}.filter-multi select{width:150px;padding:0.4rem 0.8rem;border:1px solid #dee2e6;border-radius:8px;background:white;color:#212529}.custom-theme-selector{position:absolute;top:10px;right:10px;z-index:10}.theme-option{padding:0.3rem 0.6rem;margin:0.2rem;border-radius:4px;cursor:pointer;font-size:0.8rem}.theme-option:hover{background:#e9ecef}.theme-blue{background:#4361ee;color:white}.theme-green{background:#4ade80;color:#212529}.theme-purple{background:#8b5cf6;color:white}.theme-orange{background:#f97316;color:white}.version-badge{display:inline-block;background:#facc15;color:#212529;padding:0.1rem 0.4rem;border-radius:4px;font-size:0.7rem;font-weight:bold;margin-left:0.3rem}.tag{display:inline-block;background:#e9ecef;padding:0.2rem 0.6rem;border-radius:4px;font-size:0.8rem;margin-right:0.3rem;margin-bottom:0.3rem;cursor:pointer;transition:all 0.2s ease}.tag:hover{background:#4361ee;color:white}.list-card{display:flex;gap:1rem;padding:1.2rem;border:1px solid #dee2e6;border-radius:8px;background:white;transition:all 0.3s ease}.list-card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.1)}.list-icon{width:60px;height:60px;display:flex;align-items:center;justify-content:center;border-radius:8px}.list-content{flex:1;min-width:0}.list-title{font-size:1.1rem;font-weight:700;margin-bottom:0.3rem;color:#212529;display:flex;align-items:center;gap:0.5rem}.list-meta{display:flex;flex-wrap:wrap;gap:1rem;font-size:0.85rem;color:#6c757d;margin-bottom:0.5rem}.list-actions{display:flex;gap:0.5rem;margin-top:auto;flex-wrap:wrap}.list-actions .btn{padding:0.5rem 0.8rem;font-size:0.85rem;min-width:auto}.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.8);z-index:1000;overflow:auto}.modal-content{background:#ffffff;margin:10% auto;padding:20px;width:90%;max-width:500px;border-radius:8px;position:relative;box-shadow:0 10px 25px rgba(0,0,0,0.3)}.close-modal{position:absolute;top:15px;right:20px;font-size:28px;font-weight:bold;color:#6c757d;cursor:pointer;background:none;border:none}.close-modal:hover{color:#f87171}.share-modal-title{font-size:1.3rem;font-weight:700;margin-bottom:1rem;color:#212529}.share-modal-content{margin-bottom:1.5rem}.share-modal-content p{margin:0.3rem 0;color:#495057}.share-url{background:#f8f9fa;padding:0.8rem;border-radius:6px;font-family:monospace;font-size:0.9rem;word-break:break-all}
+        *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;line-height:1.6;color:#212529;background-color:#f5f7ff;min-height:100vh;padding-bottom:2rem;transition:background-color .3s ease,color .3s ease}header{background:linear-gradient(135deg,#4361ee,#3f37c9);color:white;padding:1.5rem 2rem;box-shadow:0 4px 6px rgba(0,0,0,.1);position:sticky;top:0;z-index:100}.header-content{max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:1rem}.logo-container{display:flex;justify-content:space-between;align-items:center}.logo{display:flex;align-items:center;gap:1rem;text-decoration:none;color:white}.logo i{font-size:2.5rem}.logo h1{font-size:2rem;font-weight:700}.theme-toggle{background:rgba(255,255,255,.2);border:none;width:40px;height:40px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s ease;margin-left:0.5rem}.theme-toggle:hover{background:rgba(255,255,255,.3)}.search-container{position:relative;max-width:600px;width:100%}.search-container input{width:100%;padding:.8rem 1rem .8rem 3rem;border-radius:50px;border:1px solid #dee2e6;background-color:#f8f9fa;color:#212529;font-size:1rem;box-shadow:0 4px 6px rgba(0,0,0,.1);transition:all .3s ease}.search-container input::placeholder{color:#6c757d}.search-container input:focus{outline:none;box-shadow:0 0 0 3px rgba(67,97,238,.3)}.search-container i{position:absolute;left:1.2rem;top:50%;transform:translateY(-50%);color:#6c757d}.controls{display:flex;flex-wrap:wrap;gap:1rem;padding:1rem 2rem;background-color:white;box-shadow:0 4px 6px rgba(0,0,0,.1);margin-top:1rem;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}.controls::-webkit-scrollbar{display:none}.filters{display:flex;flex-wrap:nowrap;gap:.8rem;min-width:300px;padding-bottom:0.5rem}.sort-controls{display:flex;gap:.8rem;align-items:center}.sort-label{font-weight:600;white-space:nowrap}.filter-btn,.sort-select{padding:.5rem 1rem;background-color:#f8f9fa;border:1px solid #dee2e6;border-radius:50px;cursor:pointer;transition:all .3s ease;font-weight:600;color:#212529;white-space:nowrap}.filter-btn:hover,.filter-btn.active{background-color:#4361ee;color:white;border-color:#4361ee}.container{max-width:1200px;margin:2rem auto;padding:0 1.5rem}.stats{display:flex;justify-content:space-between;margin-bottom:1.5rem;padding:1rem;background:white;border-radius:8px;box-shadow:0 4px 6px rgba(0,0,0,.1);color:#212529;align-items:center;flex-wrap:wrap;gap:1rem}.pdf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem}.pdf-list{display:flex;flex-direction:column;gap:1rem}.pdf-card{background:white;border-radius:8px;overflow:hidden;box-shadow:0 4px 6px rgba(0,0,0,.1);transition:all .3s ease;display:flex;flex-direction:column;height:100%}.pdf-card:hover{transform:translateY(-5px);box-shadow:0 10px 20px rgba(0,0,0,.15)}.pdf-icon{background:linear-gradient(135deg,#4361ee,#4cc9f0);padding:1.5rem;text-align:center;color:white;position:relative}.favorite-btn{position:absolute;top:8px;right:8px;background:rgba(255,255,255,.3);border:none;width:24px;height:24px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;color:white;font-size:0.7rem;z-index:10}.favorite-btn.favorited{background:rgba(255,215,0,.8);color:#333}.pdf-icon i{font-size:3rem}.pdf-content{padding:1.2rem;flex-grow:1;display:flex;flex-direction:column}.pdf-title{font-size:1.2rem;font-weight:700;margin-bottom:.5rem;color:#212529;display:flex;align-items:center;gap:0.5rem}.pdf-meta{display:flex;justify-content:space-between;margin:.5rem 0;font-size:.85rem;color:#6c757d}.pdf-category{display:inline-block;background-color:#f8f9fa;padding:.2rem .6rem;border-radius:50px;font-size:.8rem;font-weight:600;color:#212529}.pdf-description{color:#6c757d;font-size:.9rem;margin:.8rem 0;flex-grow:1}.pdf-actions{display:flex;gap:.5rem;margin-top:auto;flex-wrap:wrap}.btn{padding:.6rem 1rem;border-radius:8px;font-weight:600;cursor:pointer;transition:all .3s ease;text-align:center;flex:1;text-decoration:none;display:inline-block;border:1px solid transparent;min-width:80px;justify-content:center}.btn-primary{background-color:#4361ee;color:white}.btn-primary:hover{background-color:#3f37c9}.btn-outline{background-color:transparent;color:#4361ee;border-color:#4361ee}.btn-outline:hover{background-color:#f8f9fa}.empty-state{text-align:center;padding:3rem;grid-column:1/-1}.empty-state i{font-size:4rem;color:#e9ecef;margin-bottom:1.5rem}.empty-state h3{font-size:1.5rem;margin-bottom:1rem;color:#212529}.empty-state p{color:#6c757d;max-width:500px;margin:0 auto}.pagination{display:flex;justify-content:center;gap:.5rem;margin-top:2rem}.page-btn{padding:.5rem 1rem;background-color:#f8f9fa;border:1px solid #dee2e6;color:#212529;cursor:pointer;border-radius:8px;transition:all .3s ease}.page-btn.active{background-color:#4361ee;color:white;border-color:#4361ee}.page-btn:hover:not(.active){background-color:#f8f9fa}.upload-section{background:white;padding:2rem;border-radius:8px;margin:2rem 0;box-shadow:0 4px 6px rgba(0,0,0,.1);display:none}.upload-section h3{margin-bottom:1rem;color:#212529}.upload-form{display:flex;gap:1rem;flex-wrap:wrap}.upload-input{flex:1;min-width:200px}.upload-input input,.upload-input select{width:100%;padding:.8rem;border:1px solid #dee2e6;border-radius:8px;background-color:#f8f9fa;color:#212529}.loading{text-align:center;padding:2rem;grid-column:1/-1}.loading i{font-size:2rem;color:#4361ee;margin-bottom:1rem;animation:spin 1s linear infinite}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}.error-state{text-align:center;padding:3rem;grid-column:1/-1}.error-state i{font-size:4rem;color:#f87171;margin-bottom:1.5rem}.error-state h3{font-size:1.5rem;margin-bottom:1rem;color:#212529}.error-state p{color:#6c757d;max-width:500px;margin:0 auto}footer{text-align:center;padding:2rem;color:#6c757d;font-size:.9rem}@media (max-width:768px){.header-content{padding:0 1rem}.controls{padding:1rem;flex-direction:column;overflow-x:hidden}.filters{width:100%;flex-wrap:wrap;overflow-x:auto;padding-bottom:0}.sort-controls{width:100%;justify-content:space-between}.stats{flex-direction:column;gap:.8rem}.pdf-grid{grid-template-columns:1fr}.pagination{flex-wrap:wrap}.page-btn{min-width:40px;padding:.4rem .6rem;font-size:.9rem}}@media (max-width:480px){header{padding:1rem}.logo h1{font-size:1.5rem}.search-container input{padding:.7rem .8rem .7rem 2.5rem;font-size:.9rem}.pdf-actions{flex-direction:column}.btn{width:100%}}.pdf-card{opacity:0;transform:translateY(20px);animation:fadeInUp .6s ease-out forwards}@keyframes fadeInUp{to{opacity:1;transform:translateY(0)}}@media (prefers-reduced-motion:reduce){.pdf-card{animation:none;opacity:1;transform:none}.loading i{animation:none}}.skip-link{position:absolute;top:-40px;left:6px;background:#4361ee;color:white;padding:8px;text-decoration:none;border-radius:4px;z-index:1000}.skip-link:focus{top:6px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.share-buttons{display:flex;gap:0.8rem;margin-top:1.5rem;justify-content:center}.share-btn{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;border:none;cursor:pointer;transition:all .3s ease;box-shadow:0 2px 4px rgba(0,0,0,0.1)}.share-btn:hover{transform:scale(1.1)}.share-facebook{background:#3b5998;color:white}.share-twitter{background:#1da1f2;color:white}.share-linkedin{background:#0077b5;color:white}.share-whatsapp{background:#25d366;color:white}.share-copy{background:#6c757d;color:white}.advanced-filters{display:flex;flex-wrap:wrap;gap:0.8rem;margin-top:0.5rem;padding:0.5rem;background:#f8f9fa;border-radius:8px}.filter-multi{position:relative}.filter-multi select{width:150px;padding:0.4rem 0.8rem;border:1px solid #dee2e6;border-radius:8px;background:white;color:#212529}.custom-theme-selector{position:fixed;top:70px;right:20px;z-index:1000;background:white;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.15);padding:1rem;display:none}.theme-option{padding:0.5rem 0.8rem;margin:0.2rem;border-radius:6px;cursor:pointer;font-size:0.9rem;text-align:center}.theme-option:hover{background:#e9ecef}.theme-blue{background:#4361ee;color:white}.theme-green{background:#4ade80;color:#212529}.theme-purple{background:#8b5cf6;color:white}.theme-orange{background:#f97316;color:white}.version-badge{display:inline-block;background:#facc15;color:#212529;padding:0.1rem 0.4rem;border-radius:4px;font-size:0.7rem;font-weight:bold;margin-left:0.3rem}.tag{display:inline-block;background:#e9ecef;padding:0.2rem 0.6rem;border-radius:4px;font-size:0.8rem;margin-right:0.3rem;margin-bottom:0.3rem;cursor:pointer;transition:all 0.2s ease}.tag:hover{background:#4361ee;color:white}.list-card{display:flex;gap:1rem;padding:1.2rem;border:1px solid #dee2e6;border-radius:8px;background:white;transition:all 0.3s ease}.list-card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.1)}.list-icon{width:60px;height:60px;display:flex;align-items:center;justify-content:center;border-radius:8px}.list-content{flex:1;min-width:0}.list-title{font-size:1.1rem;font-weight:700;margin-bottom:0.3rem;color:#212529;display:flex;align-items:center;gap:0.5rem}.list-meta{display:flex;flex-wrap:wrap;gap:1rem;font-size:0.85rem;color:#6c757d;margin-bottom:0.5rem}.list-actions{display:flex;gap:0.5rem;margin-top:auto;flex-wrap:wrap}.list-actions .btn{padding:0.5rem 0.8rem;font-size:0.85rem;min-width:auto}.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.8);z-index:1000;overflow:auto}.modal-content{background:#ffffff;margin:10% auto;padding:20px;width:90%;max-width:500px;border-radius:8px;position:relative;box-shadow:0 10px 25px rgba(0,0,0,0.3)}.close-modal{position:absolute;top:15px;right:20px;font-size:28px;font-weight:bold;color:#6c757d;cursor:pointer;background:none;border:none}.close-modal:hover{color:#f87171}.share-modal-title{font-size:1.3rem;font-weight:700;margin-bottom:1rem;color:#212529}.share-modal-content{margin-bottom:1.5rem}.share-modal-content p{margin:0.3rem 0;color:#495057}.share-url{background:#f8f9fa;padding:0.8rem;border-radius:6px;font-family:monospace;font-size:0.9rem;word-break:break-all}.search-suggestions{position:absolute;top:100%;left:0;right:0;background:white;border:1px solid #dee2e6;border-top:none;border-radius:0 0 8px 8px;max-height:200px;overflow-y:auto;z-index:100}.search-suggestion-item{padding:0.8rem 1rem;cursor:pointer;border-bottom:1px solid #f8f9fa}.search-suggestion-item:hover,.search-suggestion-item.active{background:#f8f9fa}.search-history{margin-top:0.5rem;padding-top:0.5rem;border-top:1px solid #f8f9fa}.search-history h4{font-size:0.9rem;margin-bottom:0.5rem;color:#6c757d}.search-history-item{display:flex;justify-content:space-between;align-items:center;padding:0.5rem 0;font-size:0.9rem;cursor:pointer}.search-history-item:hover{color:#4361ee}.annotation-modal{max-width:600px}.annotation-input{width:100%;height:100px;padding:0.8rem;border:1px solid #dee2e6;border-radius:8px;margin-bottom:1rem;resize:vertical}.pwa-install-btn{background:#4ade80;color:#212529;border:none;padding:0.5rem 1rem;border-radius:8px;cursor:pointer;font-weight:600;margin-left:0.5rem;display:none}.pwa-install-btn:hover{background:#22c55e;color:white}.mobile-menu-btn{display:none;background:#4361ee;color:white;border:none;width:40px;height:40px;border-radius:50%;margin-left:0.5rem;display:flex;align-items:center;justify-content:center}@media (max-width:768px){.mobile-menu-btn{display:flex}.filters{display:none}.filters.active{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:white;padding:1rem;box-shadow:0 4px 12px rgba(0,0,0,0.15);z-index:100;border-radius:0 0 8px 8px}}
     </style>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Resource Preloading -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js" as="script">
     <link rel="preload" as="font" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2" type="font/woff2" crossorigin>
 
-    <!-- Structured Data for SEO -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -70,13 +70,12 @@
     </script>
 </head>
 <body>
-    <!-- Skip to main content link -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <header>
         <div class="header-content">
             <div class="logo-container">
-                <a href="https://yourusername.github.io/your-repo/" class="logo" role="banner">
+                <a href="/" class="logo" role="banner">
                     <i class="fas fa-file-alt" aria-hidden="true"></i>
                     <h1>Document Library</h1>
                 </a>
@@ -84,18 +83,16 @@
                     <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
                         <i class="fas fa-moon" aria-hidden="true"></i>
                     </button>
-                    <button class="view-mode-toggle" id="viewModeToggle" aria-label="Toggle view mode">
-                        <i class="fas fa-th-large" aria-hidden="true"></i>
-                    </button>
-                    <button class="sort-direction-toggle" id="sortDirectionToggle" aria-label="Toggle sort direction">
-                        <i class="fas fa-sort-amount-down" aria-hidden="true"></i>
+                    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle filter menu">
+                        <i class="fas fa-bars" aria-hidden="true"></i>
                     </button>
                 </div>
             </div>
             <div class="search-container">
                 <i class="fas fa-search" aria-hidden="true"></i>
-                <input type="text" id="searchInput" placeholder="Search documents by title, description, tags, or category..."
-                       aria-label="Search documents">
+                <input type="text" id="searchInput" placeholder="Search documents (use AND, OR, NOT)..."
+                       aria-label="Search documents with boolean operators">
+                <div class="search-suggestions" id="searchSuggestions" style="display:none;"></div>
             </div>
         </div>
     </header>
@@ -116,27 +113,6 @@
         </div>
     </div>
 
-    <!-- Advanced Filters -->
-    <div class="container">
-        <div class="advanced-filters" id="advancedFilters">
-            <div class="filter-multi">
-                <select id="categoryFilter" multiple aria-label="Select categories">
-                    <option value="">All Categories</option>
-                </select>
-            </div>
-            <div class="filter-multi">
-                <select id="typeFilter" multiple aria-label="Select file types">
-                    <option value="">All Types</option>
-                </select>
-            </div>
-            <div class="filter-multi">
-                <select id="tagFilter" multiple aria-label="Select tags">
-                    <option value="">All Tags</option>
-                </select>
-            </div>
-        </div>
-    </div>
-
     <div class="container">
         <div class="stats" role="status">
             <div>
@@ -147,13 +123,21 @@
                     </button>)
                 </span>
             </div>
-            <div>
+            <div style="display:flex;align-items:center;gap:0.5rem;">
                 <i class="fas fa-download" aria-hidden="true"></i> All files are free to download
+                <button class="view-mode-toggle" id="viewModeToggle" aria-label="Toggle view mode" style="background:rgba(67,97,238,0.1);border:none;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#4361ee;">
+                    <i class="fas fa-th-large" aria-hidden="true"></i>
+                </button>
+                <button class="sort-direction-toggle" id="sortDirectionToggle" aria-label="Toggle sort direction" style="background:rgba(67,97,238,0.1);border:none;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#4361ee;">
+                    <i class="fas fa-sort-amount-down" aria-hidden="true"></i>
+                </button>
+                <button class="pwa-install-btn" id="pwaInstallBtn">Install App</button>
             </div>
         </div>
 
-        <!-- Custom Theme Selector -->
-        <div class="custom-theme-selector" id="customThemeSelector" style="display:none;">
+        <!-- Custom Theme Selector - Now visible and properly positioned -->
+        <div class="custom-theme-selector" id="customThemeSelector">
+            <h4 style="margin-bottom:0.5rem;padding-bottom:0.5rem;border-bottom:1px solid #f8f9fa;">Choose Theme</h4>
             <div class="theme-option theme-blue" data-theme="blue">Blue</div>
             <div class="theme-option theme-green" data-theme="green">Green</div>
             <div class="theme-option theme-purple" data-theme="purple">Purple</div>
@@ -162,7 +146,6 @@
 
         <main id="main-content">
             <div id="documentsContainer" class="pdf-grid" role="region" aria-label="Document library">
-                <!-- Loading state will be shown here -->
                 <div class="loading" role="status" aria-live="polite">
                     <i class="fas fa-spinner" aria-hidden="true"></i>
                     <p>Loading documents...</p>
@@ -170,7 +153,6 @@
             </div>
 
             <div class="pagination" id="paginationContainer" role="navigation" aria-label="Pagination">
-                <!-- Pagination will be generated here -->
             </div>
         </main>
     </div>
@@ -186,6 +168,9 @@
                         <button class="btn btn-primary" id="downloadPreviewBtn">
                             <i class="fas fa-download"></i> Download
                         </button>
+                        <button class="btn btn-outline" id="annotateBtn">
+                            <i class="fas fa-sticky-note"></i> Add Note
+                        </button>
                     </div>
                 </div>
                 <div id="documentViewer"></div>
@@ -193,7 +178,17 @@
         </div>
     </div>
 
-    <!-- Share Modal - Fixed and Improved -->
+    <!-- Annotation Modal -->
+    <div id="annotationModal" class="modal">
+        <div class="modal-content annotation-modal">
+            <button class="close-modal">&times;</button>
+            <h3>Add Note to Document</h3>
+            <textarea class="annotation-input" id="annotationInput" placeholder="Add your notes here..."></textarea>
+            <button class="btn btn-primary" id="saveAnnotationBtn">Save Note</button>
+        </div>
+    </div>
+
+    <!-- Share Modal -->
     <div id="shareModal" class="modal">
         <div class="modal-content">
             <button class="close-modal">&times;</button>
@@ -352,7 +347,10 @@
         .dark-theme .upload-section,
         .dark-theme .modal-content,
         .dark-theme .advanced-filters,
-        .dark-theme .list-card {
+        .dark-theme .list-card,
+        .dark-theme .custom-theme-selector,
+        .dark-theme .search-suggestions,
+        .dark-theme .search-suggestion-item {
             background: var(--card-bg);
             color: var(--text-color);
         }
@@ -365,7 +363,9 @@
         .dark-theme .error-state p,
         .dark-theme .advanced-filters,
         .dark-theme .list-meta,
-        .dark-theme .share-modal-content p {
+        .dark-theme .share-modal-content p,
+        .dark-theme .search-suggestion-item,
+        .dark-theme .search-history-item {
             color: var(--text-secondary);
         }
 
@@ -381,7 +381,9 @@
 
         .dark-theme .filter-btn,
         .dark-theme .sort-select,
-        .dark-theme .filter-multi select {
+        .dark-theme .filter-multi select,
+        .dark-theme .search-suggestion-item:hover,
+        .dark-theme .search-suggestion-item.active {
             background-color: var(--input-bg);
             border-color: var(--input-border);
             color: var(--text-color);
@@ -415,6 +417,12 @@
 
         .dark-theme .share-url {
             background: #334155;
+            color: #f1f5f9;
+        }
+
+        .dark-theme .annotation-input {
+            background: #334155;
+            border-color: #475569;
             color: #f1f5f9;
         }
 
@@ -463,26 +471,34 @@
             margin: 1rem 0;
         }
 
-        /* Keyboard shortcut hint */
-        .shortcut-hint {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            margin-top: 0.5rem;
-            font-style: italic;
+        /* PWA install button */
+        .dark-theme .pwa-install-btn {
+            background: #4ade80;
+            color: #212529;
         }
 
-        /* Modal styles for dark theme */
-        .dark-theme .modal-content {
-            background: #1e293b;
-            color: #f1f5f9;
-        }
-
-        .dark-theme .share-modal-title {
-            color: #f1f5f9;
+        .dark-theme .pwa-install-btn:hover {
+            background: #22c55e;
+            color: white;
         }
     </style>
 
-    <!-- Deferred Scripts -->
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(registrationError => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
+
+    <!-- Main Application Script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('currentYear').textContent = new Date().getFullYear();
@@ -493,6 +509,7 @@
 
             initApp();
             initKeyboardShortcuts();
+            initPWA();
         });
 
         // Main application state
@@ -512,7 +529,10 @@
             selectedCategories: new Set(),
             selectedTypes: new Set(),
             selectedTags: new Set(),
-            customTheme: 'default'
+            customTheme: 'default',
+            searchHistory: [],
+            annotations: new Map(),
+            deferredPrompt: null
         };
 
         // DOM Elements
@@ -522,12 +542,16 @@
         let categoryFilter, typeFilter, tagFilter, customThemeSelector;
         let shareModal, shareDocumentTitle, shareDocumentDescription, shareUrlDisplay;
         let shareFacebook, shareTwitter, shareLinkedin, shareWhatsapp, shareCopy;
+        let annotationModal, annotationInput, saveAnnotationBtn, annotateBtn;
+        let searchSuggestions, mobileMenuBtn, pwaInstallBtn;
 
-        // Current document for sharing
-        let currentShareDocument = null;
+        // Current document for operations
+        let currentDocument = null;
+        let currentDocumentUrl = '';
 
         // Initialize the application
         function initApp() {
+            // Get DOM elements
             documentsContainer = document.getElementById('documentsContainer');
             searchInput = document.getElementById('searchInput');
             filtersContainer = document.getElementById('filtersContainer');
@@ -545,9 +569,6 @@
             downloadPreviewBtn = document.getElementById('downloadPreviewBtn');
             documentViewer = document.getElementById('documentViewer');
             viewFavoritesBtn = document.getElementById('view-favorites');
-            categoryFilter = document.getElementById('categoryFilter');
-            typeFilter = document.getElementById('typeFilter');
-            tagFilter = document.getElementById('tagFilter');
             customThemeSelector = document.getElementById('customThemeSelector');
             shareModal = document.getElementById('shareModal');
             shareDocumentTitle = document.getElementById('shareDocumentTitle');
@@ -558,6 +579,13 @@
             shareLinkedin = document.getElementById('shareLinkedin');
             shareWhatsapp = document.getElementById('shareWhatsapp');
             shareCopy = document.getElementById('shareCopy');
+            annotationModal = document.getElementById('annotationModal');
+            annotationInput = document.getElementById('annotationInput');
+            saveAnnotationBtn = document.getElementById('saveAnnotationBtn');
+            annotateBtn = document.getElementById('annotateBtn');
+            searchSuggestions = document.getElementById('searchSuggestions');
+            mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            pwaInstallBtn = document.getElementById('pwaInstallBtn');
 
             // Close modal buttons
             const closeButtons = document.querySelectorAll('.close-modal');
@@ -566,10 +594,11 @@
             });
 
             loadFavorites();
+            loadAnnotations();
+            loadSearchHistory();
             loadUserPreferences();
             loadDocuments().then(() => {
                 renderFilters();
-                renderAdvancedFilters();
                 renderDocuments();
                 setupEventListeners();
                 initTheme();
@@ -867,6 +896,63 @@
             }
         }
 
+        // Load annotations from localStorage
+        function loadAnnotations() {
+            try {
+                const saved = localStorage.getItem('documentAnnotations');
+                if (saved) {
+                    const annotationsObj = JSON.parse(saved);
+                    state.annotations = new Map(Object.entries(annotationsObj));
+                }
+            } catch (e) {
+                console.warn('Could not load annotations:', e);
+            }
+        }
+
+        // Save annotations to localStorage
+        function saveAnnotations() {
+            try {
+                const annotationsObj = Object.fromEntries(state.annotations);
+                localStorage.setItem('documentAnnotations', JSON.stringify(annotationsObj));
+            } catch (e) {
+                console.warn('Could not save annotations:', e);
+            }
+        }
+
+        // Load search history from localStorage
+        function loadSearchHistory() {
+            try {
+                const saved = localStorage.getItem('searchHistory');
+                if (saved) {
+                    state.searchHistory = JSON.parse(saved);
+                }
+            } catch (e) {
+                console.warn('Could not load search history:', e);
+            }
+        }
+
+        // Save search history to localStorage
+        function saveSearchHistory() {
+            try {
+                localStorage.setItem('searchHistory', JSON.stringify(state.searchHistory.slice(0, 10))); // Keep last 10
+            } catch (e) {
+                console.warn('Could not save search history:', e);
+            }
+        }
+
+        // Add to search history
+        function addToSearchHistory(query) {
+            if (!query.trim()) return;
+
+            // Remove if already exists
+            state.searchHistory = state.searchHistory.filter(item => item !== query);
+            // Add to beginning
+            state.searchHistory.unshift(query);
+            // Keep only last 10
+            state.searchHistory = state.searchHistory.slice(0, 10);
+            saveSearchHistory();
+        }
+
         // Update favorites count display
         function updateFavoritesCount() {
             const count = state.favorites.size;
@@ -949,23 +1035,6 @@
             return ['all', ...Array.from(categories)];
         }
 
-        // Get unique types
-        function getUniqueTypes(docs) {
-            const types = new Set(docs.map(doc => doc.type));
-            return Array.from(types);
-        }
-
-        // Get unique tags
-        function getUniqueTags(docs) {
-            const tags = new Set();
-            docs.forEach(doc => {
-                if (doc.tags) {
-                    doc.tags.forEach(tag => tags.add(tag));
-                }
-            });
-            return Array.from(tags);
-        }
-
         // Render filters
         function renderFilters() {
             const categories = getUniqueCategories(state.allDocuments);
@@ -978,26 +1047,118 @@
             `).join('');
         }
 
-        // Render advanced filters
-        function renderAdvancedFilters() {
-            const categories = getUniqueCategories(state.allDocuments).filter(cat => cat !== 'all');
-            const types = getUniqueTypes(state.allDocuments);
-            const tags = getUniqueTags(state.allDocuments);
+        // Advanced boolean search parser
+        function parseBooleanSearch(query) {
+            if (!query.trim()) return () => true;
 
-            // Categories
-            categoryFilter.innerHTML = '<option value="">All Categories</option>' +
-                categories.map(cat => `<option value="${cat}">${formatCategory(cat)}</option>`).join('');
+            // Split by spaces but preserve quoted phrases
+            const tokens = query.match(/(?:[^\s"]+|"[^"]*")+/g) || [];
 
-            // Types
-            typeFilter.innerHTML = '<option value="">All Types</option>' +
-                types.map(type => `<option value="${type}">${type.toUpperCase()}</option>`).join('');
+            return (doc) => {
+                const text = `${doc.title} ${doc.description} ${doc.category} ${doc.tags?.join(' ') || ''}`.toLowerCase();
 
-            // Tags
-            tagFilter.innerHTML = '<option value="">All Tags</option>' +
-                tags.map(tag => `<option value="${tag}">${tag}</option>`).join('');
+                let shouldInclude = true;
+                let hasConditions = false;
+
+                for (let i = 0; i < tokens.length; i++) {
+                    const token = tokens[i].replace(/"/g, '').toLowerCase();
+
+                    if (token === 'and') {
+                        // Implicit AND is default, so we don't need to do anything
+                        continue;
+                    } else if (token === 'or') {
+                        // Handle OR logic
+                        if (i > 0 && i < tokens.length - 1) {
+                            const prevToken = tokens[i-1].replace(/"/g, '').toLowerCase();
+                            const nextToken = tokens[i+1].replace(/"/g, '').toLowerCase();
+                            if (text.includes(prevToken) || text.includes(nextToken)) {
+                                shouldInclude = true;
+                                i++; // Skip next token
+                                hasConditions = true;
+                                continue;
+                            }
+                        }
+                    } else if (token.startsWith('not ')) {
+                        const notTerm = token.substring(4);
+                        if (text.includes(notTerm)) {
+                            shouldInclude = false;
+                            hasConditions = true;
+                        }
+                    } else if (token === 'not' && i < tokens.length - 1) {
+                        const nextToken = tokens[i+1].replace(/"/g, '').toLowerCase();
+                        if (text.includes(nextToken)) {
+                            shouldInclude = false;
+                            i++; // Skip next token
+                            hasConditions = true;
+                            continue;
+                        }
+                    } else {
+                        // Regular term
+                        if (!text.includes(token)) {
+                            shouldInclude = false;
+                            hasConditions = true;
+                        }
+                    }
+                }
+
+                return hasConditions ? shouldInclude : text.includes(query.toLowerCase());
+            };
         }
 
-        // Render documents with consistent functionality in both views
+        // Get search suggestions
+        function getSearchSuggestions(query) {
+            if (!query.trim()) return [];
+
+            const allTerms = new Set();
+            state.allDocuments.forEach(doc => {
+                allTerms.add(doc.title);
+                allTerms.add(doc.category);
+                if (doc.tags) doc.tags.forEach(tag => allTerms.add(tag));
+            });
+
+            const suggestions = Array.from(allTerms)
+                .filter(term => term.toLowerCase().includes(query.toLowerCase()))
+                .slice(0, 5);
+
+            return suggestions;
+        }
+
+        // Render search suggestions
+        function renderSearchSuggestions(suggestions) {
+            if (suggestions.length === 0) {
+                searchSuggestions.style.display = 'none';
+                return;
+            }
+
+            searchSuggestions.innerHTML = suggestions.map(suggestion => `
+                <div class="search-suggestion-item" data-suggestion="${escapeHtml(suggestion)}">
+                    ${escapeHtml(suggestion)}
+                </div>
+            `).join('');
+
+            searchSuggestions.style.display = 'block';
+        }
+
+        // Render search history
+        function renderSearchHistory() {
+            if (state.searchHistory.length === 0) return;
+
+            const historyHtml = `
+                <div class="search-history">
+                    <h4>Recent Searches</h4>
+                    ${state.searchHistory.map(query => `
+                        <div class="search-history-item" data-history="${escapeHtml(query)}">
+                            <span>${escapeHtml(query)}</span>
+                            <i class="fas fa-history"></i>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+
+            searchSuggestions.innerHTML += historyHtml;
+        }
+
+        // Render documents
         function renderDocuments() {
             let filteredDocs = [...state.allDocuments];
 
@@ -1006,15 +1167,10 @@
                 filteredDocs = filteredDocs.filter(doc => state.favorites.has(doc.id));
             }
 
-            // Apply search filter
+            // Apply search filter with boolean operators
             if (state.searchTerm) {
-                filteredDocs = filteredDocs.filter(doc => {
-                    const matchesSearch = doc.title.toLowerCase().includes(state.searchTerm) ||
-                                         doc.description.toLowerCase().includes(state.searchTerm) ||
-                                         doc.category.toLowerCase().includes(state.searchTerm) ||
-                                         (doc.tags && doc.tags.some(tag => tag.toLowerCase().includes(state.searchTerm)));
-                    return matchesSearch;
-                });
+                const searchFilter = parseBooleanSearch(state.searchTerm);
+                filteredDocs = filteredDocs.filter(searchFilter);
             }
 
             // Apply advanced filters
@@ -1032,7 +1188,7 @@
                 );
             }
 
-            // Apply basic category filter (only if not using advanced filters)
+            // Apply basic category filter
             if (state.activeCategory !== 'all' && state.selectedCategories.size === 0) {
                 filteredDocs = filteredDocs.filter(doc => doc.category === state.activeCategory);
             }
@@ -1061,7 +1217,6 @@
                 }
             } else {
                 if (state.viewMode === 'grid') {
-                    // Grid view with consistent functionality
                     documentsContainer.innerHTML = paginatedDocs.map((doc, index) => `
                         <article class="pdf-card" data-category="${doc.category}" data-title="${doc.title}" data-date="${doc.date}" data-size="${doc.size}">
                             <div class="pdf-icon ${getDocIconClass(doc.type)}">
@@ -1089,7 +1244,7 @@
                                         ${doc.tags.map(tag => `<span class="tag" data-tag="${tag}">${escapeHtml(tag)}</span>`).join('')}
                                     </div>` : ''}
                                 <div class="pdf-actions">
-                                    <button class="btn btn-outline preview-btn" data-url="${doc.downloadUrl}" data-title="${doc.title}" data-type="${doc.type}"
+                                    <button class="btn btn-outline preview-btn" data-url="${doc.downloadUrl}" data-title="${doc.title}" data-type="${doc.type}" data-doc-id="${doc.id}"
                                             aria-label="Preview ${doc.title}">
                                         <i class="fas fa-eye"></i> Preview
                                     </button>
@@ -1106,7 +1261,6 @@
                         </article>
                     `).join('');
                 } else {
-                    // List view with consistent functionality and proper design
                     documentsContainer.innerHTML = paginatedDocs.map((doc, index) => `
                         <article class="list-card" data-category="${doc.category}" data-title="${doc.title}" data-date="${doc.date}" data-size="${doc.size}">
                             <div class="list-icon ${getDocIconClass(doc.type)}">
@@ -1136,7 +1290,7 @@
                                             style="width:32px;height:32px;border-radius:50%;background:rgba(67,97,238,0.1);border:none;color:var(--primary);display:flex;align-items:center;justify-content:center;margin-right:0.5rem;">
                                         <i class="fas fa-star" style="font-size:0.8rem;"></i>
                                     </button>
-                                    <button class="btn btn-outline preview-btn" data-url="${doc.downloadUrl}" data-title="${doc.title}" data-type="${doc.type}"
+                                    <button class="btn btn-outline preview-btn" data-url="${doc.downloadUrl}" data-title="${doc.title}" data-type="${doc.type}" data-doc-id="${doc.id}"
                                             aria-label="Preview ${doc.title}" style="padding:0.5rem 0.8rem;font-size:0.85rem;">
                                         <i class="fas fa-eye"></i> Preview
                                     </button>
@@ -1252,6 +1406,31 @@
                     renderDocuments();
                 });
             });
+
+            // Search suggestion handlers
+            document.querySelectorAll('.search-suggestion-item').forEach(item => {
+                item.addEventListener('click', (e) => {
+                    const suggestion = e.currentTarget.dataset.suggestion;
+                    searchInput.value = suggestion;
+                    state.searchTerm = suggestion;
+                    addToSearchHistory(suggestion);
+                    state.currentPage = 1;
+                    renderDocuments();
+                    searchSuggestions.style.display = 'none';
+                });
+            });
+
+            // Search history handlers
+            document.querySelectorAll('.search-history-item').forEach(item => {
+                item.addEventListener('click', (e) => {
+                    const query = e.currentTarget.dataset.history;
+                    searchInput.value = query;
+                    state.searchTerm = query;
+                    state.currentPage = 1;
+                    renderDocuments();
+                    searchSuggestions.style.display = 'none';
+                });
+            });
         }
 
         // Handle document preview
@@ -1259,88 +1438,28 @@
             const url = e.currentTarget.dataset.url;
             const title = e.currentTarget.dataset.title;
             const type = e.currentTarget.dataset.type;
-            openDocumentPreview(url, title, type);
-        }
-
-        // Handle document sharing - Fixed and working properly
-        function handleShare(e) {
             const docId = e.currentTarget.dataset.docId;
-            const document = state.allDocuments.find(doc => doc.id === docId);
 
-            if (document) {
-                currentShareDocument = document;
-                openShareModal(document);
-            }
-        }
-
-        // Open share modal - Fixed implementation
-        function openShareModal(document) {
-            const shareUrl = `${window.location.origin}${window.location.pathname}`;
-
-            // Update modal content
-            shareDocumentTitle.textContent = document.title;
-            shareDocumentDescription.textContent = document.description;
-            shareUrlDisplay.textContent = shareUrl;
-
-            shareModal.style.display = 'block';
-
-            // Setup share button events
-            const shareText = `Check out this document: ${document.title} (v${document.version}) - ${document.description}`;
-
-            shareFacebook.onclick = () => {
-                const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(shareText)}`;
-                window.open(url, '_blank', 'width=600,height=400');
-                trackShare('facebook', document.title);
-            };
-
-            shareTwitter.onclick = () => {
-                const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
-                window.open(url, '_blank', 'width=600,height=400');
-                trackShare('twitter', document.title);
-            };
-
-            shareLinkedin.onclick = () => {
-                const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
-                window.open(url, '_blank', 'width=600,height=400');
-                trackShare('linkedin', document.title);
-            };
-
-            shareWhatsapp.onclick = () => {
-                const url = `https://wa.me/?text=${encodeURIComponent(`${shareText} ${shareUrl}`)}`;
-                window.open(url, '_blank');
-                trackShare('whatsapp', document.title);
-            };
-
-            shareCopy.onclick = () => {
-                navigator.clipboard.writeText(shareUrl).then(() => {
-                    // Show success feedback
-                    const originalText = shareCopy.innerHTML;
-                    shareCopy.innerHTML = '<i class="fas fa-check"></i>';
-                    setTimeout(() => {
-                        shareCopy.innerHTML = originalText;
-                    }, 2000);
-                    trackShare('copy', document.title);
-                }).catch(err => {
-                    console.error('Failed to copy: ', err);
-                    alert('Failed to copy URL to clipboard');
-                });
-            };
-        }
-
-        // Close modals
-        function closeModal() {
-            documentModal.style.display = 'none';
-            shareModal.style.display = 'none';
-            documentViewer.innerHTML = '';
-            currentShareDocument = null;
-        }
-
-        // Open document preview modal
-        async function openDocumentPreview(url, title, type) {
+            currentDocument = state.allDocuments.find(doc => doc.id === docId);
             currentDocumentUrl = url;
             previewTitle.textContent = title;
             documentModal.style.display = 'block';
 
+            // Load existing annotation
+            const existingAnnotation = state.annotations.get(docId);
+            if (existingAnnotation) {
+                // Show annotation button with indicator
+                annotateBtn.innerHTML = '<i class="fas fa-sticky-note"></i> Edit Note';
+            } else {
+                annotateBtn.innerHTML = '<i class="fas fa-sticky-note"></i> Add Note';
+            }
+
+            // Load document preview
+            loadDocumentPreview(url, title, type);
+        }
+
+        // Load document preview
+        async function loadDocumentPreview(url, title, type) {
             try {
                 documentViewer.innerHTML = '<div style="text-align: center; padding: 20px; color: #6c757d;">Loading document...</div>';
 
@@ -1363,6 +1482,96 @@
                 `;
                 console.error('Error loading document:', error);
             }
+        }
+
+        // Handle document sharing
+        function handleShare(e) {
+            const docId = e.currentTarget.dataset.docId;
+            const document = state.allDocuments.find(doc => doc.id === docId);
+
+            if (document) {
+                const shareUrl = `${window.location.origin}${window.location.pathname}`;
+
+                shareDocumentTitle.textContent = document.title;
+                shareDocumentDescription.textContent = document.description;
+                shareUrlDisplay.textContent = shareUrl;
+
+                shareModal.style.display = 'block';
+
+                const shareText = `Check out this document: ${document.title} (v${document.version}) - ${document.description}`;
+
+                shareFacebook.onclick = () => {
+                    const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(shareText)}`;
+                    window.open(url, '_blank', 'width=600,height=400');
+                    trackShare('facebook', document.title);
+                };
+
+                shareTwitter.onclick = () => {
+                    const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+                    window.open(url, '_blank', 'width=600,height=400');
+                    trackShare('twitter', document.title);
+                };
+
+                shareLinkedin.onclick = () => {
+                    const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
+                    window.open(url, '_blank', 'width=600,height=400');
+                    trackShare('linkedin', document.title);
+                };
+
+                shareWhatsapp.onclick = () => {
+                    const url = `https://wa.me/?text=${encodeURIComponent(`${shareText} ${shareUrl}`)}`;
+                    window.open(url, '_blank');
+                    trackShare('whatsapp', document.title);
+                };
+
+                shareCopy.onclick = () => {
+                    navigator.clipboard.writeText(shareUrl).then(() => {
+                        const originalText = shareCopy.innerHTML;
+                        shareCopy.innerHTML = '<i class="fas fa-check"></i>';
+                        setTimeout(() => {
+                            shareCopy.innerHTML = originalText;
+                        }, 2000);
+                        trackShare('copy', document.title);
+                    }).catch(err => {
+                        console.error('Failed to copy: ', err);
+                        alert('Failed to copy URL to clipboard');
+                    });
+                };
+            }
+        }
+
+        // Handle annotation
+        function handleAnnotation() {
+            if (!currentDocument) return;
+
+            const existingAnnotation = state.annotations.get(currentDocument.id);
+            annotationInput.value = existingAnnotation || '';
+            annotationModal.style.display = 'block';
+        }
+
+        // Save annotation
+        function saveAnnotation() {
+            if (!currentDocument) return;
+
+            const annotation = annotationInput.value.trim();
+            if (annotation) {
+                state.annotations.set(currentDocument.id, annotation);
+            } else {
+                state.annotations.delete(currentDocument.id);
+            }
+            saveAnnotations();
+            annotationModal.style.display = 'none';
+        }
+
+        // Close modals
+        function closeModal() {
+            documentModal.style.display = 'none';
+            shareModal.style.display = 'none';
+            annotationModal.style.display = 'none';
+            searchSuggestions.style.display = 'none';
+            documentViewer.innerHTML = '';
+            currentDocument = null;
+            currentDocumentUrl = '';
         }
 
         // Preview PDF documents
@@ -1421,7 +1630,6 @@
 
                 documentViewer.innerHTML = `<div class="markdown-content">${htmlContent}</div>`;
 
-                // Initialize Mermaid diagrams
                 setTimeout(() => {
                     try {
                         mermaid.init();
@@ -1514,13 +1722,33 @@
 
         // Setup event listeners
         function setupEventListeners() {
+            // Search with advanced features
             searchInput.addEventListener('input', debounce((e) => {
-                state.searchTerm = e.target.value.toLowerCase();
-                state.currentPage = 1;
-                state.viewingFavorites = false;
-                renderDocuments();
+                state.searchTerm = e.target.value;
+                renderSearchSuggestions(getSearchSuggestions(state.searchTerm));
+                renderSearchHistory();
             }, 300));
 
+            searchInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    if (state.searchTerm.trim()) {
+                        addToSearchHistory(state.searchTerm);
+                    }
+                    state.currentPage = 1;
+                    state.viewingFavorites = false;
+                    renderDocuments();
+                    searchSuggestions.style.display = 'none';
+                }
+            });
+
+            // Click outside search suggestions to close
+            document.addEventListener('click', (e) => {
+                if (!searchInput.contains(e.target) && !searchSuggestions.contains(e.target)) {
+                    searchSuggestions.style.display = 'none';
+                }
+            });
+
+            // Filters
             filtersContainer.addEventListener('click', (e) => {
                 if (e.target.classList.contains('filter-btn')) {
                     state.activeCategory = e.target.dataset.category;
@@ -1537,15 +1765,18 @@
                 }
             });
 
+            // Sorting
             sortSelect.addEventListener('change', (e) => {
                 state.sortBy = e.target.value;
                 state.currentPage = 1;
                 renderDocuments();
             });
 
-            sortDirectionToggle.addEventListener('click', toggleSortDirection);
+            // View mode and sort direction
             viewModeToggle.addEventListener('click', toggleViewMode);
+            sortDirectionToggle.addEventListener('click', toggleSortDirection);
 
+            // Pagination
             paginationContainer.addEventListener('click', (e) => {
                 if (e.target.classList.contains('page-btn') && e.target.dataset.page) {
                     state.currentPage = parseInt(e.target.dataset.page);
@@ -1553,12 +1784,13 @@
                 }
             });
 
+            // Theme toggle
             themeToggle.addEventListener('click', toggleTheme);
 
-            // Advanced filter event listeners
-            categoryFilter.addEventListener('change', handleAdvancedFilter);
-            typeFilter.addEventListener('change', handleAdvancedFilter);
-            tagFilter.addEventListener('change', handleAdvancedFilter);
+            // Mobile menu toggle
+            mobileMenuBtn.addEventListener('click', () => {
+                filtersContainer.classList.toggle('active');
+            });
 
             // Custom theme selector
             customThemeSelector.addEventListener('click', (e) => {
@@ -1568,6 +1800,7 @@
                 }
             });
 
+            // Favorites button
             if (viewFavoritesBtn) {
                 viewFavoritesBtn.addEventListener('click', (e) => {
                     e.preventDefault();
@@ -1575,7 +1808,7 @@
                 });
             }
 
-            // Modal click outside to close
+            // Modal close handlers
             documentModal.addEventListener('click', (e) => {
                 if (e.target === documentModal) closeModal();
             });
@@ -1584,6 +1817,20 @@
                 if (e.target === shareModal) closeModal();
             });
 
+            annotationModal.addEventListener('click', (e) => {
+                if (e.target === annotationModal) closeModal();
+            });
+
+            // Annotation button
+            if (annotateBtn) {
+                annotateBtn.addEventListener('click', handleAnnotation);
+            }
+
+            if (saveAnnotationBtn) {
+                saveAnnotationBtn.addEventListener('click', saveAnnotation);
+            }
+
+            // Download preview button
             if (downloadPreviewBtn) {
                 downloadPreviewBtn.addEventListener('click', () => {
                     if (currentDocumentUrl) {
@@ -1595,24 +1842,6 @@
             // Initialize UI state
             updateViewModeButton();
             updateSortDirectionButton();
-        }
-
-        // Handle advanced filter changes
-        function handleAdvancedFilter(e) {
-            const select = e.target;
-            const selectedValues = Array.from(select.selectedOptions).map(option => option.value).filter(val => val);
-
-            if (select.id === 'categoryFilter') {
-                state.selectedCategories = new Set(selectedValues);
-                state.activeCategory = 'all';
-            } else if (select.id === 'typeFilter') {
-                state.selectedTypes = new Set(selectedValues);
-            } else if (select.id === 'tagFilter') {
-                state.selectedTags = new Set(selectedValues);
-            }
-
-            state.currentPage = 1;
-            renderDocuments();
         }
 
         // Format category for display
@@ -1671,6 +1900,7 @@
             themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
             themeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
 
+            // Toggle custom theme selector visibility
             customThemeSelector.style.display = isDark ? 'none' : 'block';
         }
 
@@ -1745,10 +1975,38 @@
                         toggleTheme();
                         break;
                     case 'Escape':
-                        if (documentModal.style.display === 'block' || shareModal.style.display === 'block') {
+                        if (documentModal.style.display === 'block' ||
+                            shareModal.style.display === 'block' ||
+                            annotationModal.style.display === 'block') {
                             closeModal();
                         }
                         break;
+                }
+            });
+        }
+
+        // Initialize PWA functionality
+        function initPWA() {
+            // Handle beforeinstallprompt event
+            window.addEventListener('beforeinstallprompt', (e) => {
+                e.preventDefault();
+                state.deferredPrompt = e;
+                pwaInstallBtn.style.display = 'block';
+            });
+
+            // Handle install button click
+            pwaInstallBtn.addEventListener('click', () => {
+                if (state.deferredPrompt) {
+                    state.deferredPrompt.prompt();
+                    state.deferredPrompt.userChoice.then((choiceResult) => {
+                        if (choiceResult.outcome === 'accepted') {
+                            console.log('User accepted the install prompt');
+                        } else {
+                            console.log('User dismissed the install prompt');
+                        }
+                        state.deferredPrompt = null;
+                        pwaInstallBtn.style.display = 'none';
+                    });
                 }
             });
         }
@@ -1772,9 +2030,74 @@
             div.textContent = text;
             return div.innerHTML;
         }
+    </script>
 
-        // Current document URL for preview
-        let currentDocumentUrl = '';
+    <!-- Service Worker (sw.js) - Create this file in your root directory -->
+    <script id="sw-content" type="application/javascript">
+        // This content should be saved as sw.js in your repository root
+        const CACHE_NAME = 'document-library-v1';
+        const urlsToCache = [
+            '/',
+            '/index.html',
+            '/css/style.css',
+            '/js/app.js',
+            '/favicon.ico',
+            '/favicon-32x32.png',
+            '/favicon-16x16.png',
+            '/apple-touch-icon.png'
+        ];
+
+        self.addEventListener('install', (event) => {
+            event.waitUntil(
+                caches.open(CACHE_NAME)
+                    .then((cache) => cache.addAll(urlsToCache))
+            );
+        });
+
+        self.addEventListener('fetch', (event) => {
+            event.respondWith(
+                caches.match(event.request)
+                    .then((response) => {
+                        if (response) {
+                            return response;
+                        }
+                        return fetch(event.request);
+                    })
+            );
+        });
+    </script>
+
+    <!-- PWA Manifest (manifest.json) - Create this file in your root directory -->
+    <script id="manifest-content" type="application/json">
+    {
+        "name": "Document Library",
+        "short_name": "DocLib",
+        "description": "Document Library with PDF, Office, and Markdown support",
+        "start_url": "/",
+        "display": "standalone",
+        "background_color": "#f5f7ff",
+        "theme_color": "#4361ee",
+        "icons": [
+            {
+                "src": "/favicon-192x192.png",
+                "sizes": "192x192",
+                "type": "image/png"
+            },
+            {
+                "src": "/favicon-512x512.png",
+                "sizes": "512x512",
+                "type": "image/png"
+            }
+        ]
+    }
+    </script>
+
+    <script>
+        // Output PWA files to console for easy copying
+        console.log('=== SERVICE WORKER (save as sw.js) ===');
+        console.log(document.getElementById('sw-content').textContent);
+        console.log('=== MANIFEST.JSON (save as manifest.json) ===');
+        console.log(document.getElementById('manifest-content').textContent);
     </script>
 </body>
 </html>
