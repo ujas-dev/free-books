@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PDF Library</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- PDF.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <style>
         :root {
             --primary: #4361ee;
@@ -21,6 +23,29 @@
             --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             --radius: 8px;
             --transition: all 0.3s ease;
+            
+            /* Light theme variables */
+            --bg-color: #f5f7ff;
+            --card-bg: white;
+            --text-color: var(--dark);
+            --text-secondary: var(--gray);
+            --header-bg: linear-gradient(135deg, var(--primary), var(--secondary));
+            --filter-bg: white;
+            --input-bg: white;
+            --input-border: var(--border);
+            --input-placeholder: var(--gray);
+        }
+
+        .dark-theme {
+            --bg-color: #121826;
+            --card-bg: #1e293b;
+            --text-color: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --header-bg: linear-gradient(135deg, #3730a3, #1e1b4b);
+            --filter-bg: #1e293b;
+            --input-bg: #334155;
+            --input-border: #475569;
+            --input-placeholder: #94a3b8;
         }
 
         * {
@@ -32,14 +57,15 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: var(--dark);
-            background-color: #f5f7ff;
+            color: var(--text-color);
+            background-color: var(--bg-color);
             min-height: 100vh;
             padding-bottom: 2rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: var(--header-bg);
             color: white;
             padding: 1.5rem 2rem;
             box-shadow: var(--shadow);
@@ -54,6 +80,12 @@
             display: flex;
             flex-direction: column;
             gap: 1rem;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .logo {
@@ -71,6 +103,23 @@
             font-weight: 700;
         }
 
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
         .search-container {
             position: relative;
             max-width: 600px;
@@ -81,10 +130,16 @@
             width: 100%;
             padding: 0.8rem 1rem 0.8rem 3rem;
             border-radius: 50px;
-            border: none;
+            border: 1px solid var(--input-border);
+            background-color: var(--input-bg);
+            color: var(--text-color);
             font-size: 1rem;
             box-shadow: var(--shadow);
             transition: var(--transition);
+        }
+
+        .search-container input::placeholder {
+            color: var(--input-placeholder);
         }
 
         .search-container input:focus {
@@ -97,27 +152,53 @@
             left: 1.2rem;
             top: 50%;
             transform: translateY(-50%);
-            color: var(--gray);
+            color: var(--input-placeholder);
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding: 1rem 2rem;
+            background-color: var(--filter-bg);
+            box-shadow: var(--shadow);
+            margin-top: 1rem;
         }
 
         .filters {
             display: flex;
             flex-wrap: wrap;
             gap: 0.8rem;
-            padding: 1rem 2rem;
-            background-color: white;
-            box-shadow: var(--shadow);
-            margin-top: 1rem;
+            flex: 1;
+            min-width: 300px;
         }
 
-        .filter-btn {
+        .sort-controls {
+            display: flex;
+            gap: 0.8rem;
+            align-items: center;
+        }
+
+        .sort-label {
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .filter-btn, .sort-select {
             padding: 0.5rem 1rem;
-            background-color: var(--light);
-            border: 1px solid var(--border);
+            background-color: var(--input-bg);
+            border: 1px solid var(--input-border);
             border-radius: 50px;
             cursor: pointer;
             transition: var(--transition);
             font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .sort-select {
+            border-radius: 8px;
+            padding: 0.5rem;
+            min-width: 120px;
         }
 
         .filter-btn:hover, .filter-btn.active {
@@ -137,9 +218,10 @@
             justify-content: space-between;
             margin-bottom: 1.5rem;
             padding: 1rem;
-            background: white;
+            background: var(--card-bg);
             border-radius: var(--radius);
             box-shadow: var(--shadow);
+            color: var(--text-color);
         }
 
         .pdf-grid {
@@ -149,7 +231,7 @@
         }
 
         .pdf-card {
-            background: white;
+            background: var(--card-bg);
             border-radius: var(--radius);
             overflow: hidden;
             box-shadow: var(--shadow);
@@ -186,7 +268,7 @@
             font-size: 1.2rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
-            color: var(--dark);
+            color: var(--text-color);
         }
 
         .pdf-meta {
@@ -194,20 +276,21 @@
             justify-content: space-between;
             margin: 0.5rem 0;
             font-size: 0.85rem;
-            color: var(--gray);
+            color: var(--text-secondary);
         }
 
         .pdf-category {
             display: inline-block;
-            background-color: var(--light);
+            background-color: var(--input-bg);
             padding: 0.2rem 0.6rem;
             border-radius: 50px;
             font-size: 0.8rem;
             font-weight: 600;
+            color: var(--text-color);
         }
 
         .pdf-description {
-            color: var(--gray);
+            color: var(--text-secondary);
             font-size: 0.9rem;
             margin: 0.8rem 0;
             flex-grow: 1;
@@ -229,12 +312,12 @@
             flex: 1;
             text-decoration: none;
             display: inline-block;
+            border: 1px solid transparent;
         }
 
         .btn-primary {
             background-color: var(--primary);
             color: white;
-            border: 1px solid var(--primary);
         }
 
         .btn-primary:hover {
@@ -244,11 +327,11 @@
         .btn-outline {
             background-color: transparent;
             color: var(--primary);
-            border: 1px solid var(--primary);
+            border-color: var(--primary);
         }
 
         .btn-outline:hover {
-            background-color: var(--light);
+            background-color: var(--input-bg);
         }
 
         .empty-state {
@@ -266,19 +349,93 @@
         .empty-state h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: var(--dark);
+            color: var(--text-color);
         }
 
         .empty-state p {
-            color: var(--gray);
+            color: var(--text-secondary);
             max-width: 500px;
             margin: 0 auto;
+        }
+
+        /* PDF Preview Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow: auto;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            margin: 2% auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 900px;
+            border-radius: var(--radius);
+            position: relative;
+            max-height: 90vh;
+            overflow: hidden;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--text-color);
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .close-modal:hover {
+            color: var(--danger);
+        }
+
+        #pdfViewer {
+            width: 100%;
+            height: 70vh;
+            overflow: auto;
+            background: white;
+            border-radius: 8px;
+        }
+
+        .pdf-preview-container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .pdf-preview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .pdf-preview-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .pdf-preview-actions {
+            display: flex;
+            gap: 10px;
         }
 
         footer {
             text-align: center;
             padding: 2rem;
-            color: var(--gray);
+            color: var(--text-secondary);
             font-size: 0.9rem;
         }
 
@@ -287,8 +444,18 @@
                 padding: 0 1rem;
             }
             
-            .filters {
+            .controls {
                 padding: 1rem;
+                flex-direction: column;
+            }
+            
+            .filters {
+                width: 100%;
+            }
+            
+            .sort-controls {
+                width: 100%;
+                justify-content: space-between;
             }
             
             .stats {
@@ -298,6 +465,11 @@
             
             .pdf-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                margin: 5% auto;
+                width: 95%;
             }
         }
 
@@ -310,14 +482,38 @@
         .pdf-card {
             animation: fadeIn 0.5s ease-out;
         }
+
+        /* Loading indicator */
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            grid-column: 1 / -1;
+        }
+
+        .loading i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="header-content">
-            <div class="logo">
-                <i class="fas fa-file-pdf"></i>
-                <h1>PDF Library</h1>
+            <div class="logo-container">
+                <div class="logo">
+                    <i class="fas fa-file-pdf"></i>
+                    <h1>PDF Library</h1>
+                </div>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
             </div>
             <div class="search-container">
                 <i class="fas fa-search"></i>
@@ -326,13 +522,18 @@
         </div>
     </header>
 
-    <div class="filters">
-        <button class="filter-btn active" data-category="all">All Categories</button>
-        <button class="filter-btn" data-category="manual">User Manuals</button>
-        <button class="filter-btn" data-category="guide">Guides</button>
-        <button class="filter-btn" data-category="report">Reports</button>
-        <button class="filter-btn" data-category="research">Research</button>
-        <button class="filter-btn" data-category="other">Other</button>
+    <div class="controls">
+        <div class="filters" id="filtersContainer">
+            <!-- Filters will be generated dynamically -->
+        </div>
+        <div class="sort-controls">
+            <span class="sort-label">Sort by:</span>
+            <select class="sort-select" id="sortSelect">
+                <option value="title">Title</option>
+                <option value="date">Date</option>
+                <option value="size">Size</option>
+            </select>
+        </div>
     </div>
 
     <div class="container">
@@ -346,7 +547,28 @@
         </div>
 
         <div class="pdf-grid" id="pdfGrid">
-            <!-- PDF cards will be generated here -->
+            <div class="loading">
+                <i class="fas fa-spinner"></i>
+                <p>Loading PDFs...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PDF Preview Modal -->
+    <div id="pdfModal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <div class="pdf-preview-container">
+                <div class="pdf-preview-header">
+                    <h3 class="pdf-preview-title" id="previewTitle">PDF Preview</h3>
+                    <div class="pdf-preview-actions">
+                        <button class="btn btn-primary" id="downloadPreviewBtn">
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                    </div>
+                </div>
+                <div id="pdfViewer"></div>
+            </div>
         </div>
     </div>
 
@@ -356,85 +578,192 @@
     </footer>
 
     <script>
-        // Sample PDF data - in a real implementation, this would be in a separate JSON file
-        const pdfData = [
-            {
-                id: 1,
-                title: "User Manual - XYZ Device",
-                description: "Complete user manual for the XYZ device with setup instructions and troubleshooting.",
-                category: "manual",
-                size: "2.4 MB",
-                pages: 42,
-                date: "2023-05-15",
-                downloadUrl: "pdfs/xyz-device-manual.pdf"
-            },
-            {
-                id: 2,
-                title: "Beginner's Guide to Web Development",
-                description: "Comprehensive guide covering HTML, CSS, and JavaScript fundamentals for beginners.",
-                category: "guide",
-                size: "3.1 MB",
-                pages: 78,
-                date: "2023-02-28",
-                downloadUrl: "pdfs/web-dev-guide.pdf"
-            },
-            {
-                id: 3,
-                title: "Annual Sustainability Report 2022",
-                description: "Our company's environmental impact and sustainability initiatives for 2022.",
-                category: "report",
-                size: "5.7 MB",
-                pages: 120,
-                date: "2023-01-10",
-                downloadUrl: "pdfs/sustainability-report-2022.pdf"
-            },
-            {
-                id: 4,
-                title: "Machine Learning Research Paper",
-                description: "Latest findings on neural network optimization techniques and applications.",
-                category: "research",
-                size: "1.8 MB",
-                pages: 24,
-                date: "2023-06-22",
-                downloadUrl: "pdfs/ml-research-paper.pdf"
-            },
-            {
-                id: 5,
-                title: "Cookbook - Mediterranean Recipes",
-                description: "Collection of authentic Mediterranean recipes with nutritional information.",
-                category: "other",
-                size: "4.2 MB",
-                pages: 65,
-                date: "2023-04-05",
-                downloadUrl: "pdfs/mediterranean-cookbook.pdf"
-            },
-            {
-                id: 6,
-                title: "Advanced JavaScript Patterns",
-                description: "Deep dive into advanced JavaScript design patterns and best practices.",
-                category: "guide",
-                size: "2.9 MB",
-                pages: 56,
-                date: "2023-03-18",
-                downloadUrl: "pdfs/js-patterns.pdf"
-            }
-        ];
+        // Set PDF.js worker
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
         // DOM Elements
         const pdfGrid = document.getElementById('pdfGrid');
         const searchInput = document.getElementById('searchInput');
-        const filterButtons = document.querySelectorAll('.filter-btn');
+        const filtersContainer = document.getElementById('filtersContainer');
+        const sortSelect = document.getElementById('sortSelect');
+        const themeToggle = document.getElementById('themeToggle');
         const totalCount = document.getElementById('total-count');
+        const pdfModal = document.getElementById('pdfModal');
+        const closeBtn = document.querySelector('.close-modal');
+        const previewTitle = document.getElementById('previewTitle');
+        const downloadPreviewBtn = document.getElementById('downloadPreviewBtn');
+        const pdfViewer = document.getElementById('pdfViewer');
+
+        // State
+        let allPDFs = [];
+        let currentPDFUrl = '';
+
+        // Initialize PDF.js
+        function initPDFJS() {
+            // This is handled by the CDN script
+        }
+
+        // Detect PDF files from directory (simulated for GitHub Pages)
+        async function detectPDFFiles() {
+            try {
+                // In a real GitHub Pages setup, you would need to maintain a JSON file
+                // with your PDF metadata since you can't read directory contents directly
+                // For this demo, we'll simulate the detection
+                
+                // In practice, create a pdfs.json file in your root directory
+                const response = await fetch('pdfs.json');
+                if (response.ok) {
+                    const data = await response.json();
+                    return data.map(pdf => ({
+                        ...pdf,
+                        // Ensure all required properties exist
+                        id: pdf.id || Date.now() + Math.random(),
+                        title: pdf.title || 'Untitled PDF',
+                        description: pdf.description || 'No description available',
+                        category: pdf.category || 'other',
+                        size: pdf.size || 'Unknown',
+                        pages: pdf.pages || 'Unknown',
+                        date: pdf.date || new Date().toISOString().split('T')[0],
+                        downloadUrl: pdf.downloadUrl || ''
+                    }));
+                } else {
+                    // Fallback to sample data if pdfs.json doesn't exist
+                    return generateSampleData();
+                }
+            } catch (error) {
+                console.warn('Could not load pdfs.json, using sample data:', error);
+                return generateSampleData();
+            }
+        }
+
+        // Generate sample data for demo
+        function generateSampleData() {
+            return [
+                {
+                    id: 1,
+                    title: "User Manual - XYZ Device",
+                    description: "Complete user manual for the XYZ device with setup instructions and troubleshooting.",
+                    category: "manual",
+                    size: "2.4 MB",
+                    pages: 42,
+                    date: "2023-05-15",
+                    downloadUrl: "pdfs/xyz-device-manual.pdf"
+                },
+                {
+                    id: 2,
+                    title: "Beginner's Guide to Web Development",
+                    description: "Comprehensive guide covering HTML, CSS, and JavaScript fundamentals for beginners.",
+                    category: "guide",
+                    size: "3.1 MB",
+                    pages: 78,
+                    date: "2023-02-28",
+                    downloadUrl: "pdfs/web-dev-guide.pdf"
+                },
+                {
+                    id: 3,
+                    title: "Annual Sustainability Report 2022",
+                    description: "Our company's environmental impact and sustainability initiatives for 2022.",
+                    category: "report",
+                    size: "5.7 MB",
+                    pages: 120,
+                    date: "2023-01-10",
+                    downloadUrl: "pdfs/sustainability-report-2022.pdf"
+                },
+                {
+                    id: 4,
+                    title: "Machine Learning Research Paper",
+                    description: "Latest findings on neural network optimization techniques and applications.",
+                    category: "research",
+                    size: "1.8 MB",
+                    pages: 24,
+                    date: "2023-06-22",
+                    downloadUrl: "pdfs/ml-research-paper.pdf"
+                },
+                {
+                    id: 5,
+                    title: "Cookbook - Mediterranean Recipes",
+                    description: "Collection of authentic Mediterranean recipes with nutritional information.",
+                    category: "other",
+                    size: "4.2 MB",
+                    pages: 65,
+                    date: "2023-04-05",
+                    downloadUrl: "pdfs/mediterranean-cookbook.pdf"
+                },
+                {
+                    id: 6,
+                    title: "Advanced JavaScript Patterns",
+                    description: "Deep dive into advanced JavaScript design patterns and best practices.",
+                    category: "guide",
+                    size: "2.9 MB",
+                    pages: 56,
+                    date: "2023-03-18",
+                    downloadUrl: "pdfs/js-patterns.pdf"
+                }
+            ];
+        }
+
+        // Get unique categories
+        function getUniqueCategories(pdfs) {
+            const categories = new Set(pdfs.map(pdf => pdf.category));
+            return ['all', ...Array.from(categories)];
+        }
+
+        // Render filters
+        function renderFilters(categories) {
+            filtersContainer.innerHTML = categories.map(category => `
+                <button class="filter-btn ${category === 'all' ? 'active' : ''}" data-category="${category}">
+                    ${formatCategory(category)}
+                </button>
+            `).join('');
+        }
 
         // Initialize the page
-        function init() {
-            renderPDFs(pdfData);
-            totalCount.textContent = pdfData.length;
+        async function init() {
+            // Load PDFs
+            allPDFs = await detectPDFFiles();
+            totalCount.textContent = allPDFs.length;
             
-            // Event listeners
-            searchInput.addEventListener('input', handleSearch);
-            filterButtons.forEach(btn => {
-                btn.addEventListener('click', handleFilter);
+            // Get categories and render filters
+            const categories = getUniqueCategories(allPDFs);
+            renderFilters(categories);
+            
+            // Render PDFs
+            renderPDFs(allPDFs);
+            
+            // Set up event listeners
+            setupEventListeners();
+            
+            // Initialize theme
+            initTheme();
+        }
+
+        // Set up event listeners
+        function setupEventListeners() {
+            // Search
+            searchInput.addEventListener('input', debounce(handleSearch, 300));
+            
+            // Filters
+            filtersContainer.addEventListener('click', (e) => {
+                if (e.target.classList.contains('filter-btn')) {
+                    handleFilter(e.target);
+                }
+            });
+            
+            // Sorting
+            sortSelect.addEventListener('change', handleSort);
+            
+            // Theme toggle
+            themeToggle.addEventListener('click', toggleTheme);
+            
+            // Modal
+            closeBtn.addEventListener('click', closeModal);
+            pdfModal.addEventListener('click', (e) => {
+                if (e.target === pdfModal) closeModal();
+            });
+            
+            // Download preview button
+            downloadPreviewBtn.addEventListener('click', () => {
+                window.open(currentPDFUrl, '_blank');
             });
         }
 
@@ -452,33 +781,168 @@
             }
 
             pdfGrid.innerHTML = pdfs.map(pdf => `
-                <div class="pdf-card" data-category="${pdf.category}">
+                <div class="pdf-card" data-category="${pdf.category}" data-title="${pdf.title}" data-date="${pdf.date}" data-size="${pdf.size}">
                     <div class="pdf-icon">
                         <i class="fas fa-file-pdf"></i>
                     </div>
                     <div class="pdf-content">
-                        <h3 class="pdf-title">${pdf.title}</h3>
+                        <h3 class="pdf-title">${escapeHtml(pdf.title)}</h3>
                         <div class="pdf-meta">
                             <span>${pdf.pages} pages</span>
                             <span>${pdf.size}</span>
                         </div>
                         <span class="pdf-category">${formatCategory(pdf.category)}</span>
-                        <p class="pdf-description">${pdf.description}</p>
+                        <p class="pdf-description">${escapeHtml(pdf.description)}</p>
                         <div class="pdf-actions">
                             <a href="${pdf.downloadUrl}" class="btn btn-primary" download>
                                 <i class="fas fa-download"></i> Download
                             </a>
-                            <a href="${pdf.downloadUrl}" class="btn btn-outline" target="_blank">
+                            <button class="btn btn-outline preview-btn" data-url="${pdf.downloadUrl}" data-title="${pdf.title}">
                                 <i class="fas fa-eye"></i> Preview
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
             `).join('');
+            
+            // Add event listeners to preview buttons
+            document.querySelectorAll('.preview-btn').forEach(btn => {
+                btn.addEventListener('click', handlePreview);
+            });
+        }
+
+        // Handle preview
+        function handlePreview(e) {
+            const url = e.currentTarget.dataset.url;
+            const title = e.currentTarget.dataset.title;
+            openPDFPreview(url, title);
+        }
+
+        // Open PDF preview modal
+        async function openPDFPreview(url, title) {
+            currentPDFUrl = url;
+            previewTitle.textContent = title;
+            pdfModal.style.display = 'block';
+            
+            try {
+                // Clear previous content
+                pdfViewer.innerHTML = '<div style="text-align: center; padding: 20px;">Loading PDF...</div>';
+                
+                // Load PDF
+                const loadingTask = pdfjsLib.getDocument(url);
+                const pdf = await loadingTask.promise;
+                
+                // Clear viewer
+                pdfViewer.innerHTML = '';
+                
+                // Render first page
+                const page = await pdf.getPage(1);
+                const scale = 1.5;
+                const viewport = page.getViewport({ scale });
+                
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+                
+                pdfViewer.appendChild(canvas);
+                
+                const renderContext = {
+                    canvasContext: context,
+                    viewport: viewport
+                };
+                await page.render(renderContext).promise;
+                
+                // Add navigation for multi-page PDFs
+                if (pdf.numPages > 1) {
+                    const nav = document.createElement('div');
+                    nav.style.marginTop = '15px';
+                    nav.style.textAlign = 'center';
+                    nav.innerHTML = `
+                        <span>Page 1 of ${pdf.numPages}</span>
+                        <button id="nextPageBtn" style="margin-left: 10px; padding: 5px 10px;">Next Page</button>
+                    `;
+                    pdfViewer.appendChild(nav);
+                    
+                    document.getElementById('nextPageBtn').addEventListener('click', () => {
+                        renderPage(pdf, 2, scale);
+                    });
+                }
+            } catch (error) {
+                pdfViewer.innerHTML = `
+                    <div style="text-align: center; padding: 20px; color: var(--danger);">
+                        <i class="fas fa-exclamation-triangle" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                        <p>Error loading PDF: ${error.message}</p>
+                        <p>Try downloading the file instead.</p>
+                    </div>
+                `;
+                console.error('Error loading PDF:', error);
+            }
+        }
+
+        // Render a specific page
+        async function renderPage(pdf, pageNumber, scale) {
+            try {
+                const page = await pdf.getPage(pageNumber);
+                const viewport = page.getViewport({ scale });
+                
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+                
+                // Replace existing canvas
+                const oldCanvas = pdfViewer.querySelector('canvas');
+                if (oldCanvas) {
+                    pdfViewer.replaceChild(canvas, oldCanvas);
+                }
+                
+                const renderContext = {
+                    canvasContext: context,
+                    viewport: viewport
+                };
+                await page.render(renderContext).promise;
+                
+                // Update page indicator
+                const nav = pdfViewer.querySelector('div[style*="text-align: center"]');
+                if (nav) {
+                    nav.innerHTML = `
+                        <span>Page ${pageNumber} of ${pdf.numPages}</span>
+                        ${pageNumber < pdf.numPages ? 
+                            `<button id="nextPageBtn" style="margin-left: 10px; padding: 5px 10px;">Next Page</button>` : 
+                            ''}
+                        ${pageNumber > 1 ? 
+                            `<button id="prevPageBtn" style="margin-left: 10px; padding: 5px 10px;">Previous Page</button>` : 
+                            ''}
+                    `;
+                    
+                    if (pageNumber < pdf.numPages) {
+                        document.getElementById('nextPageBtn').addEventListener('click', () => {
+                            renderPage(pdf, pageNumber + 1, scale);
+                        });
+                    }
+                    if (pageNumber > 1) {
+                        document.getElementById('prevPageBtn').addEventListener('click', () => {
+                            renderPage(pdf, pageNumber - 1, scale);
+                        });
+                    }
+                }
+            } catch (error) {
+                console.error('Error rendering page:', error);
+            }
+        }
+
+        // Close modal
+        function closeModal() {
+            pdfModal.style.display = 'none';
+            pdfViewer.innerHTML = '';
+            currentPDFUrl = '';
         }
 
         // Format category for display
         function formatCategory(category) {
+            if (category === 'all') return 'All Categories';
+            
             const categoryMap = {
                 'manual': 'User Manual',
                 'guide': 'Guide',
@@ -486,15 +950,16 @@
                 'research': 'Research',
                 'other': 'Other'
             };
-            return categoryMap[category] || category;
+            return categoryMap[category] || category.charAt(0).toUpperCase() + category.slice(1);
         }
 
-        // Handle search
+        // Handle search with debounce
         function handleSearch(e) {
             const searchTerm = e.target.value.toLowerCase();
             const activeCategory = document.querySelector('.filter-btn.active').dataset.category;
+            const sortBy = sortSelect.value;
             
-            const filteredPDFs = pdfData.filter(pdf => {
+            let filteredPDFs = allPDFs.filter(pdf => {
                 const matchesSearch = pdf.title.toLowerCase().includes(searchTerm) || 
                                      pdf.description.toLowerCase().includes(searchTerm) ||
                                      pdf.category.toLowerCase().includes(searchTerm);
@@ -504,19 +969,25 @@
                 return matchesSearch && matchesCategory;
             });
             
+            // Sort the filtered results
+            filteredPDFs = sortPDFs(filteredPDFs, sortBy);
+            
             renderPDFs(filteredPDFs);
         }
 
         // Handle category filter
-        function handleFilter(e) {
+        function handleFilter(activeBtn) {
             // Update active button
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            e.target.classList.add('active');
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            activeBtn.classList.add('active');
             
-            const category = e.target.dataset.category;
+            const category = activeBtn.dataset.category;
             const searchTerm = searchInput.value.toLowerCase();
+            const sortBy = sortSelect.value;
             
-            const filteredPDFs = pdfData.filter(pdf => {
+            let filteredPDFs = allPDFs.filter(pdf => {
                 const matchesSearch = pdf.title.toLowerCase().includes(searchTerm) || 
                                      pdf.description.toLowerCase().includes(searchTerm) ||
                                      pdf.category.toLowerCase().includes(searchTerm);
@@ -526,7 +997,86 @@
                 return matchesSearch && matchesCategory;
             });
             
+            // Sort the filtered results
+            filteredPDFs = sortPDFs(filteredPDFs, sortBy);
+            
             renderPDFs(filteredPDFs);
+        }
+
+        // Handle sorting
+        function handleSort() {
+            const sortBy = sortSelect.value;
+            const searchTerm = searchInput.value.toLowerCase();
+            const activeCategory = document.querySelector('.filter-btn.active').dataset.category;
+            
+            let filteredPDFs = allPDFs.filter(pdf => {
+                const matchesSearch = pdf.title.toLowerCase().includes(searchTerm) || 
+                                     pdf.description.toLowerCase().includes(searchTerm) ||
+                                     pdf.category.toLowerCase().includes(searchTerm);
+                
+                const matchesCategory = activeCategory === 'all' || pdf.category === activeCategory;
+                
+                return matchesSearch && matchesCategory;
+            });
+            
+            filteredPDFs = sortPDFs(filteredPDFs, sortBy);
+            renderPDFs(filteredPDFs);
+        }
+
+        // Sort PDFs
+        function sortPDFs(pdfs, sortBy) {
+            return [...pdfs].sort((a, b) => {
+                switch (sortBy) {
+                    case 'title':
+                        return a.title.localeCompare(b.title);
+                    case 'date':
+                        return new Date(b.date) - new Date(a.date); // Newest first
+                    case 'size':
+                        // Simple size comparison (assumes format like "2.4 MB")
+                        const sizeA = parseFloat(a.size) || 0;
+                        const sizeB = parseFloat(b.size) || 0;
+                        return sizeB - sizeA; // Largest first
+                    default:
+                        return 0;
+                }
+            });
+        }
+
+        // Toggle dark mode
+        function toggleTheme() {
+            document.body.classList.toggle('dark-theme');
+            const isDark = document.body.classList.contains('dark-theme');
+            localStorage.setItem('darkMode', isDark);
+            themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        }
+
+        // Initialize theme
+        function initTheme() {
+            const savedTheme = localStorage.getItem('darkMode') === 'true';
+            if (savedTheme) {
+                document.body.classList.add('dark-theme');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        }
+
+        // Debounce function
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Escape HTML to prevent XSS
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
         }
 
         // Initialize when DOM is loaded
