@@ -3,38 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon for all devices -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+
     <!-- Rich Content SEO Meta Tags -->
-    <meta name="description" content="PDF Library with Office document support, search, categories, favorites, and automatic RSS feed. Download and preview documents instantly.">
-    <meta name="keywords" content="PDF, Office documents, Word, Excel, PowerPoint, document library, file sharing, document preview, free downloads">
+    <meta name="description" content="Document Library with PDF, Office, and Markdown support. Preview documents, manage favorites, and stay updated with RSS feeds.">
+    <meta name="keywords" content="PDF, Office documents, Word, Excel, PowerPoint, Markdown, Mermaid, document library, file sharing, document preview, free downloads">
     <meta name="author" content="Your Organization Name">
     <meta name="robots" content="index, follow">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yourusername.github.io/your-repo/">
-    <meta property="og:title" content="PDF & Office Document Library">
-    <meta property="og:description" content="Comprehensive library of PDF and Office documents with instant preview and download capabilities.">
-    <meta property="og:image" content="https://yourusername.github.io/your-repo/thumbnail.jpg">
+    <meta property="og:url" content="https://ujas-dev.github.io/free-books/">
+    <meta property="og:title" content="Document Library | PDF, Office & Markdown Support">
+    <meta property="og:description" content="Comprehensive library with PDF, Office, and Markdown document support including Mermaid diagrams.">
+    <meta property="og:image" content="https://ujas-dev.github.io/free-books/thumbnail.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://yourusername.github.io/your-repo/">
-    <meta property="twitter:title" content="PDF & Office Document Library">
-    <meta property="twitter:description" content="Comprehensive library of PDF and Office documents with instant preview and download capabilities.">
-    <meta property="twitter:image" content="https://yourusername.github.io/your-repo/thumbnail.jpg">
+    <meta property="twitter:url" content="https://ujas-dev.github.io/free-books/">
+    <meta property="twitter:title" content="Document Library | PDF, Office & Markdown Support">
+    <meta property="twitter:description" content="Comprehensive library with PDF, Office, and Markdown document support including Mermaid diagrams.">
+    <meta property="twitter:image" content="https://ujas-dev.github.io/free-books/thumbnail.jpg">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://yourusername.github.io/your-repo/">
+    <link rel="canonical" href="https://ujas-dev.github.io/free-books/">
 
     <!-- RSS Feed -->
     <link rel="alternate" type="application/rss+xml" title="Document Library Updates" href="feed.xml">
 
-    <title>PDF & Office Document Library | Free Downloads & Previews</title>
+    <title>Document Library | PDF, Office & Markdown Support</title>
 
-    <!-- Critical CSS Inlined for above-the-fold content -->
+    <!-- Critical CSS Inlined -->
     <style>
         /* Critical CSS for initial render */
-        *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;line-height:1.6;color:#212529;background-color:#f5f7ff;min-height:100vh;padding-bottom:2rem;transition:background-color .3s ease,color .3s ease}header{background:linear-gradient(135deg,#4361ee,#3f37c9);color:white;padding:1.5rem 2rem;box-shadow:0 4px 6px rgba(0,0,0,.1);position:sticky;top:0;z-index:100}.header-content{max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:1rem}.logo-container{display:flex;justify-content:space-between;align-items:center}.logo{display:flex;align-items:center;gap:1rem}.logo i{font-size:2.5rem}.logo h1{font-size:2rem;font-weight:700}.theme-toggle{background:rgba(255,255,255,.2);border:none;width:40px;height:40px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s ease}.theme-toggle:hover{background:rgba(255,255,255,.3)}.search-container{position:relative;max-width:600px;width:100%}.search-container input{width:100%;padding:.8rem 1rem .8rem 3rem;border-radius:50px;border:1px solid #dee2e6;background-color:#f8f9fa;color:#212529;font-size:1rem;box-shadow:0 4px 6px rgba(0,0,0,.1);transition:all .3s ease}.search-container input::placeholder{color:#6c757d}.search-container input:focus{outline:none;box-shadow:0 0 0 3px rgba(67,97,238,.3)}.search-container i{position:absolute;left:1.2rem;top:50%;transform:translateY(-50%);color:#6c757d}.controls{display:flex;flex-wrap:wrap;gap:1rem;padding:1rem 2rem;background-color:white;box-shadow:0 4px 6px rgba(0,0,0,.1);margin-top:1rem}.filters{display:flex;flex-wrap:wrap;gap:.8rem;flex:1;min-width:300px}.sort-controls{display:flex;gap:.8rem;align-items:center}.sort-label{font-weight:600;white-space:nowrap}.filter-btn,.sort-select{padding:.5rem 1rem;background-color:#f8f9fa;border:1px solid #dee2e6;border-radius:50px;cursor:pointer;transition:all .3s ease;font-weight:600;color:#212529}.sort-select{border-radius:8px;padding:.5rem;min-width:120px}.filter-btn:hover,.filter-btn.active{background-color:#4361ee;color:white;border-color:#4361ee}.container{max-width:1200px;margin:2rem auto;padding:0 1.5rem}.stats{display:flex;justify-content:space-between;margin-bottom:1.5rem;padding:1rem;background:white;border-radius:8px;box-shadow:0 4px 6px rgba(0,0,0,.1);color:#212529}.pdf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem}.pdf-card{background:white;border-radius:8px;overflow:hidden;box-shadow:0 4px 6px rgba(0,0,0,.1);transition:all .3s ease;display:flex;flex-direction:column;height:100%}.pdf-card:hover{transform:translateY(-5px);box-shadow:0 10px 20px rgba(0,0,0,.15)}.pdf-icon{background:linear-gradient(135deg,#4361ee,#4cc9f0);padding:1.5rem;text-align:center;color:white;position:relative}.favorite-btn{position:absolute;top:10px;right:10px;background:rgba(255,255,255,.3);border:none;width:30px;height:30px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;color:white}.favorite-btn.favorited{background:rgba(255,215,0,.8);color:#333}.pdf-icon i{font-size:3rem}.pdf-content{padding:1.2rem;flex-grow:1;display:flex;flex-direction:column}.pdf-title{font-size:1.2rem;font-weight:700;margin-bottom:.5rem;color:#212529}.pdf-meta{display:flex;justify-content:space-between;margin:.5rem 0;font-size:.85rem;color:#6c757d}.pdf-category{display:inline-block;background-color:#f8f9fa;padding:.2rem .6rem;border-radius:50px;font-size:.8rem;font-weight:600;color:#212529}.pdf-description{color:#6c757d;font-size:.9rem;margin:.8rem 0;flex-grow:1}.pdf-actions{display:flex;gap:.5rem;margin-top:auto}.btn{padding:.6rem 1rem;border-radius:8px;font-weight:600;cursor:pointer;transition:all .3s ease;text-align:center;flex:1;text-decoration:none;display:inline-block;border:1px solid transparent}.btn-primary{background-color:#4361ee;color:white}.btn-primary:hover{background-color:#3f37c9}.btn-outline{background-color:transparent;color:#4361ee;border-color:#4361ee}.btn-outline:hover{background-color:#f8f9fa}.empty-state{text-align:center;padding:3rem;grid-column:1/-1}.empty-state i{font-size:4rem;color:#e9ecef;margin-bottom:1.5rem}.empty-state h3{font-size:1.5rem;margin-bottom:1rem;color:#212529}.empty-state p{color:#6c757d;max-width:500px;margin:0 auto}.pagination{display:flex;justify-content:center;gap:.5rem;margin-top:2rem}.page-btn{padding:.5rem 1rem;background-color:#f8f9fa;border:1px solid #dee2e6;color:#212529;cursor:pointer;border-radius:8px;transition:all .3s ease}.page-btn.active{background-color:#4361ee;color:white;border-color:#4361ee}.page-btn:hover:not(.active){background-color:#f8f9fa}.upload-section{background:white;padding:2rem;border-radius:8px;margin:2rem 0;box-shadow:0 4px 6px rgba(0,0,0,.1);display:none}.upload-section h3{margin-bottom:1rem;color:#212529}.upload-form{display:flex;gap:1rem;flex-wrap:wrap}.upload-input{flex:1;min-width:200px}.upload-input input,.upload-input select{width:100%;padding:.8rem;border:1px solid #dee2e6;border-radius:8px;background-color:#f8f9fa;color:#212529}.loading{text-align:center;padding:2rem;grid-column:1/-1}.loading i{font-size:2rem;color:#4361ee;margin-bottom:1rem;animation:spin 1s linear infinite}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}.error-state{text-align:center;padding:3rem;grid-column:1/-1}.error-state i{font-size:4rem;color:#f87171;margin-bottom:1.5rem}.error-state h3{font-size:1.5rem;margin-bottom:1rem;color:#212529}.error-state p{color:#6c757d;max-width:500px;margin:0 auto}footer{text-align:center;padding:2rem;color:#6c757d;font-size:.9rem}@media (max-width:768px){.header-content{padding:0 1rem}.controls{padding:1rem;flex-direction:column}.filters{width:100%}.sort-controls{width:100%;justify-content:space-between}.stats{flex-direction:column;gap:.8rem}.pdf-grid{grid-template-columns:1fr}.pagination{flex-wrap:wrap}.page-btn{min-width:40px;padding:.4rem .6rem;font-size:.9rem}}@media (max-width:480px){header{padding:1rem}.logo h1{font-size:1.5rem}.search-container input{padding:.7rem .8rem .7rem 2.5rem;font-size:.9rem}.pdf-actions{flex-direction:column}.btn{width:100%}}.pdf-card{opacity:0;transform:translateY(20px);animation:fadeInUp .6s ease-out forwards}@keyframes fadeInUp{to{opacity:1;transform:translateY(0)}}@media (prefers-reduced-motion:reduce){.pdf-card{animation:none;opacity:1;transform:none}.loading i{animation:none}}.skip-link{position:absolute;top:-40px;left:6px;background:#4361ee;color:white;padding:8px;text-decoration:none;border-radius:4px;z-index:1000}.skip-link:focus{top:6px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+        *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;line-height:1.6;color:#212529;background-color:#f5f7ff;min-height:100vh;padding-bottom:2rem;transition:background-color .3s ease,color .3s ease}header{background:linear-gradient(135deg,#4361ee,#3f37c9);color:white;padding:1.5rem 2rem;box-shadow:0 4px 6px rgba(0,0,0,.1);position:sticky;top:0;z-index:100}.header-content{max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:1rem}.logo-container{display:flex;justify-content:space-between;align-items:center}.logo{display:flex;align-items:center;gap:1rem}.logo i{font-size:2.5rem}.logo h1{font-size:2rem;font-weight:700}.theme-toggle,.view-mode-toggle{background:rgba(255,255,255,.2);border:none;width:40px;height:40px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s ease;margin-left:0.5rem}.theme-toggle:hover,.view-mode-toggle:hover{background:rgba(255,255,255,.3)}.search-container{position:relative;max-width:600px;width:100%}.search-container input{width:100%;padding:.8rem 1rem .8rem 3rem;border-radius:50px;border:1px solid #dee2e6;background-color:#f8f9fa;color:#212529;font-size:1rem;box-shadow:0 4px 6px rgba(0,0,0,.1);transition:all .3s ease}.search-container input::placeholder{color:#6c757d}.search-container input:focus{outline:none;box-shadow:0 0 0 3px rgba(67,97,238,.3)}.search-container i{position:absolute;left:1.2rem;top:50%;transform:translateY(-50%);color:#6c757d}.controls{display:flex;flex-wrap:wrap;gap:1rem;padding:1rem 2rem;background-color:white;box-shadow:0 4px 6px rgba(0,0,0,.1);margin-top:1rem}.filters{display:flex;flex-wrap:wrap;gap:.8rem;flex:1;min-width:300px}.sort-controls{display:flex;gap:.8rem;align-items:center}.sort-label{font-weight:600;white-space:nowrap}.filter-btn,.sort-select{padding:.5rem 1rem;background-color:#f8f9fa;border:1px solid #dee2e6;border-radius:50px;cursor:pointer;transition:all .3s ease;font-weight:600;color:#212529}.sort-select{border-radius:8px;padding:.5rem;min-width:120px}.filter-btn:hover,.filter-btn.active{background-color:#4361ee;color:white;border-color:#4361ee}.container{max-width:1200px;margin:2rem auto;padding:0 1.5rem}.stats{display:flex;justify-content:space-between;margin-bottom:1.5rem;padding:1rem;background:white;border-radius:8px;box-shadow:0 4px 6px rgba(0,0,0,.1);color:#212529}.pdf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem}.pdf-list{display:flex;flex-direction:column;gap:1rem}.pdf-card{background:white;border-radius:8px;overflow:hidden;box-shadow:0 4px 6px rgba(0,0,0,.1);transition:all .3s ease;display:flex;flex-direction:column;height:100%}.pdf-card:hover{transform:translateY(-5px);box-shadow:0 10px 20px rgba(0,0,0,.15)}.pdf-icon{background:linear-gradient(135deg,#4361ee,#4cc9f0);padding:1.5rem;text-align:center;color:white;position:relative}.favorite-btn{position:absolute;top:8px;right:8px;background:rgba(255,255,255,.3);border:none;width:24px;height:24px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;color:white;font-size:0.7rem}.favorite-btn.favorited{background:rgba(255,215,0,.8);color:#333}.pdf-icon i{font-size:3rem}.pdf-content{padding:1.2rem;flex-grow:1;display:flex;flex-direction:column}.pdf-title{font-size:1.2rem;font-weight:700;margin-bottom:.5rem;color:#212529}.pdf-meta{display:flex;justify-content:space-between;margin:.5rem 0;font-size:.85rem;color:#6c757d}.pdf-category{display:inline-block;background-color:#f8f9fa;padding:.2rem .6rem;border-radius:50px;font-size:.8rem;font-weight:600;color:#212529}.pdf-description{color:#6c757d;font-size:.9rem;margin:.8rem 0;flex-grow:1}.pdf-actions{display:flex;gap:.5rem;margin-top:auto}.btn{padding:.6rem 1rem;border-radius:8px;font-weight:600;cursor:pointer;transition:all .3s ease;text-align:center;flex:1;text-decoration:none;display:inline-block;border:1px solid transparent}.btn-primary{background-color:#4361ee;color:white}.btn-primary:hover{background-color:#3f37c9}.btn-outline{background-color:transparent;color:#4361ee;border-color:#4361ee}.btn-outline:hover{background-color:#f8f9fa}.empty-state{text-align:center;padding:3rem;grid-column:1/-1}.empty-state i{font-size:4rem;color:#e9ecef;margin-bottom:1.5rem}.empty-state h3{font-size:1.5rem;margin-bottom:1rem;color:#212529}.empty-state p{color:#6c757d;max-width:500px;margin:0 auto}.pagination{display:flex;justify-content:center;gap:.5rem;margin-top:2rem}.page-btn{padding:.5rem 1rem;background-color:#f8f9fa;border:1px solid #dee2e6;color:#212529;cursor:pointer;border-radius:8px;transition:all .3s ease}.page-btn.active{background-color:#4361ee;color:white;border-color:#4361ee}.page-btn:hover:not(.active){background-color:#f8f9fa}.upload-section{background:white;padding:2rem;border-radius:8px;margin:2rem 0;box-shadow:0 4px 6px rgba(0,0,0,.1);display:none}.upload-section h3{margin-bottom:1rem;color:#212529}.upload-form{display:flex;gap:1rem;flex-wrap:wrap}.upload-input{flex:1;min-width:200px}.upload-input input,.upload-input select{width:100%;padding:.8rem;border:1px solid #dee2e6;border-radius:8px;background-color:#f8f9fa;color:#212529}.loading{text-align:center;padding:2rem;grid-column:1/-1}.loading i{font-size:2rem;color:#4361ee;margin-bottom:1rem;animation:spin 1s linear infinite}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}.error-state{text-align:center;padding:3rem;grid-column:1/-1}.error-state i{font-size:4rem;color:#f87171;margin-bottom:1.5rem}.error-state h3{font-size:1.5rem;margin-bottom:1rem;color:#212529}.error-state p{color:#6c757d;max-width:500px;margin:0 auto}footer{text-align:center;padding:2rem;color:#6c757d;font-size:.9rem}@media (max-width:768px){.header-content{padding:0 1rem}.controls{padding:1rem;flex-direction:column}.filters{width:100%}.sort-controls{width:100%;justify-content:space-between}.stats{flex-direction:column;gap:.8rem}.pdf-grid{grid-template-columns:1fr}.pagination{flex-wrap:wrap}.page-btn{min-width:40px;padding:.4rem .6rem;font-size:.9rem}}@media (max-width:480px){header{padding:1rem}.logo h1{font-size:1.5rem}.search-container input{padding:.7rem .8rem .7rem 2.5rem;font-size:.9rem}.pdf-actions{flex-direction:column}.btn{width:100%}}.pdf-card{opacity:0;transform:translateY(20px);animation:fadeInUp .6s ease-out forwards}@keyframes fadeInUp{to{opacity:1;transform:translateY(0)}}@media (prefers-reduced-motion:reduce){.pdf-card{animation:none;opacity:1;transform:none}.loading i{animation:none}}.skip-link{position:absolute;top:-40px;left:6px;background:#4361ee;color:white;padding:8px;text-decoration:none;border-radius:4px;z-index:1000}.skip-link:focus{top:6px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
     </style>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -47,9 +54,9 @@
     {
         "@context": "https://schema.org",
         "@type": "DigitalDocumentLibrary",
-        "name": "PDF & Office Document Library",
-        "description": "Comprehensive library of PDF and Office documents with instant preview and download capabilities.",
-        "url": "https://yourusername.github.io/your-repo/",
+        "name": "Document Library",
+        "description": "Comprehensive library with PDF, Office, and Markdown document support including Mermaid diagrams.",
+        "url": "https://ujas-dev.github.io/free-books/",
         "sameAs": [
             "https://github.com/yourusername/your-repo"
         ],
@@ -63,7 +70,7 @@
     </script>
 </head>
 <body>
-    <!-- Skip to main content link for accessibility -->
+    <!-- Skip to main content link -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <header>
@@ -73,9 +80,14 @@
                     <i class="fas fa-file-alt" aria-hidden="true"></i>
                     <h1>Document Library</h1>
                 </div>
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-                    <i class="fas fa-moon" aria-hidden="true"></i>
-                </button>
+                <div>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon" aria-hidden="true"></i>
+                    </button>
+                    <button class="view-mode-toggle" id="viewModeToggle" aria-label="Toggle view mode">
+                        <i class="fas fa-th-large" aria-hidden="true"></i>
+                    </button>
+                </div>
             </div>
             <div class="search-container">
                 <i class="fas fa-search" aria-hidden="true"></i>
@@ -95,6 +107,8 @@
                 <option value="title">Title</option>
                 <option value="date">Date</option>
                 <option value="size">Size</option>
+                <option value="category">Category</option>
+                <option value="type">File Type</option>
             </select>
         </div>
     </div>
@@ -104,8 +118,8 @@
             <div>
                 <strong id="total-count" aria-live="polite">0</strong> documents available
                 <span id="favorites-count" style="margin-left: 10px; display: none;">
-                    (<button id="view-favorites" class="btn-link" style="background:none;border:none;color:#4361ee;cursor:pointer;text-decoration:underline;" aria-label="View all favorites">
-                        <span id="fav-count">0</span> favorites
+                    (<button id="view-favorites" class="btn-link" style="background:none;border:none;color:#4361ee;cursor:pointer;text-decoration:underline;font-weight:600;" aria-label="View all favorites">
+                        View all <span id="fav-count">0</span> favorites
                     </button>)
                 </span>
             </div>
@@ -114,39 +128,8 @@
             </div>
         </div>
 
-        <!-- Upload section (will be shown if admin mode is enabled) -->
-        <div class="upload-section" id="uploadSection" aria-live="polite">
-            <h3><i class="fas fa-upload" aria-hidden="true"></i> Upload New Document</h3>
-            <p style="margin-bottom: 1rem; color: #6c757d;">
-                Supported formats: PDF, DOCX, XLSX, PPTX, TXT
-            </p>
-            <div class="upload-form">
-                <div class="upload-input">
-                    <label for="documentFile" class="sr-only">Document File</label>
-                    <input type="file" id="documentFile" accept=".pdf,.docx,.xlsx,.pptx,.txt" disabled aria-label="Select document file">
-                </div>
-                <div class="upload-input">
-                    <label for="documentTitle" class="sr-only">Document Title</label>
-                    <input type="text" id="documentTitle" placeholder="Document Title" disabled aria-label="Document title">
-                </div>
-                <div class="upload-input">
-                    <label for="documentCategory" class="sr-only">Document Category</label>
-                    <select id="documentCategory" disabled aria-label="Document category">
-                        <option value="manual">User Manual</option>
-                        <option value="guide">Guide</option>
-                        <option value="report">Report</option>
-                        <option value="research">Research</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-                <button class="btn btn-primary" id="uploadBtn" disabled aria-label="Upload document">
-                    <i class="fas fa-upload" aria-hidden="true"></i> Upload
-                </button>
-            </div>
-        </div>
-
         <main id="main-content">
-            <div class="pdf-grid" id="pdfGrid" role="region" aria-label="Document library">
+            <div id="documentsContainer" class="pdf-grid" role="region" aria-label="Document library">
                 <!-- Loading state will be shown here -->
                 <div class="loading" role="status" aria-live="polite">
                     <i class="fas fa-spinner" aria-hidden="true"></i>
@@ -193,9 +176,20 @@
         </p>
     </footer>
 
-    <!-- Google Analytics -->
+    <!-- External Libraries -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YOUR-GA-ID"></script>
+    <!-- Mermaid.js for Markdown diagrams -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+
     <script>
+        // Initialize Mermaid
+        mermaid.initialize({
+            startOnLoad: false,
+            theme: 'default',
+            securityLevel: 'loose'
+        });
+
+        // Google Analytics
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
@@ -211,7 +205,7 @@
         }
     </script>
 
-    <!-- Full CSS for non-critical styles and dark theme -->
+    <!-- Full CSS -->
     <style id="full-styles">
         :root {
             --primary: #4361ee;
@@ -331,15 +325,110 @@
         .doc-icon-xlsx { background: linear-gradient(135deg, #217346, #3aa964); }
         .doc-icon-pptx { background: linear-gradient(135deg, #d24726, #e6623c); }
         .doc-icon-txt { background: linear-gradient(135deg, #6c757d, #868e96); }
+        .doc-icon-md { background: linear-gradient(135deg, #083fa1, #007acc); }
+
+        /* List view styles */
+        .pdf-list-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--card-bg);
+        }
+
+        .list-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius);
+        }
+
+        .list-content {
+            flex: 1;
+        }
+
+        .list-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            color: var(--text-color);
+        }
+
+        .list-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .list-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: auto;
+        }
+
+        /* Markdown preview styles */
+        .markdown-content {
+            padding: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .markdown-content h1,
+        .markdown-content h2,
+        .markdown-content h3 {
+            margin: 1.5rem 0 1rem 0;
+            color: var(--text-color);
+        }
+
+        .markdown-content p {
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .markdown-content code {
+            background: var(--light);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        .markdown-content pre {
+            background: var(--light);
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+
+        .mermaid {
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        /* Additional suggested features UI */
+        .tag {
+            display: inline-block;
+            background: var(--light);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-right: 0.3rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .dark-theme .tag {
+            background: #334155;
+        }
     </style>
 
     <!-- Deferred Scripts -->
     <script>
-        // Load libraries after DOM loads
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-            // Initialize PDF.js
             if (typeof pdfjsLib !== 'undefined') {
                 pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
             }
@@ -358,26 +447,27 @@
             sortBy: 'title',
             isLoading: true,
             error: null,
-            viewingFavorites: false
+            viewingFavorites: false,
+            viewMode: 'grid' // 'grid' or 'list'
         };
 
         // DOM Elements
-        let pdfGrid, searchInput, filtersContainer, sortSelect, themeToggle, totalCount, favCount, favoritesCountEl;
-        let paginationContainer, uploadSection, documentModal, closeBtn, previewTitle, downloadPreviewBtn, documentViewer;
-        let viewFavoritesBtn;
+        let documentsContainer, searchInput, filtersContainer, sortSelect, themeToggle, viewModeToggle;
+        let totalCount, favCount, favoritesCountEl, paginationContainer, documentModal, closeBtn;
+        let previewTitle, downloadPreviewBtn, documentViewer, viewFavoritesBtn;
 
         // Initialize the application
         function initApp() {
-            pdfGrid = document.getElementById('pdfGrid');
+            documentsContainer = document.getElementById('documentsContainer');
             searchInput = document.getElementById('searchInput');
             filtersContainer = document.getElementById('filtersContainer');
             sortSelect = document.getElementById('sortSelect');
             themeToggle = document.getElementById('themeToggle');
+            viewModeToggle = document.getElementById('viewModeToggle');
             totalCount = document.getElementById('total-count');
             favCount = document.getElementById('fav-count');
             favoritesCountEl = document.getElementById('favorites-count');
             paginationContainer = document.getElementById('paginationContainer');
-            uploadSection = document.getElementById('uploadSection');
             documentModal = document.getElementById('documentModal');
             closeBtn = document.querySelector('.close-modal');
             previewTitle = document.getElementById('previewTitle');
@@ -391,7 +481,7 @@
                 renderDocuments();
                 setupEventListeners();
                 initTheme();
-                generateRSSFeed(); // Generate RSS feed automatically
+                generateRSSFeed();
             }).catch(error => {
                 console.error('Failed to load documents:', error);
                 state.error = 'Failed to load document data. Please try again later.';
@@ -399,7 +489,7 @@
             });
         }
 
-        // Load documents with support for multiple formats
+        // Load documents with support for multiple formats including Markdown
         async function loadDocuments() {
             try {
                 state.isLoading = true;
@@ -419,7 +509,8 @@
                         pages: doc.pages || 'Unknown',
                         date: doc.date || new Date().toISOString().split('T')[0],
                         downloadUrl: doc.downloadUrl || '',
-                        type: doc.type || getFileType(doc.downloadUrl)
+                        type: doc.type || getFileType(doc.downloadUrl),
+                        tags: doc.tags || []
                     }));
                 } else {
                     state.allDocuments = generateSampleData();
@@ -449,7 +540,9 @@
                 'xls': 'xlsx',
                 'pptx': 'pptx',
                 'ppt': 'pptx',
-                'txt': 'txt'
+                'txt': 'txt',
+                'md': 'md',
+                'markdown': 'md'
             };
             return typeMap[ext] || 'other';
         }
@@ -467,12 +560,13 @@
                 'xlsx': 'fa-file-excel',
                 'pptx': 'fa-file-powerpoint',
                 'txt': 'fa-file-alt',
+                'md': 'fa-file-code',
                 'other': 'fa-file'
             };
             return iconMap[type] || 'fa-file';
         }
 
-        // Generate sample data with multiple document types
+        // Generate sample data with multiple document types including Markdown
         function generateSampleData() {
             return [
                 {
@@ -484,7 +578,8 @@
                     pages: 42,
                     date: "2023-05-15",
                     downloadUrl: "documents/xyz-device-manual.pdf",
-                    type: "pdf"
+                    type: "pdf",
+                    tags: ["manual", "hardware", "setup"]
                 },
                 {
                     id: 'doc-2',
@@ -495,7 +590,8 @@
                     pages: 78,
                     date: "2023-02-28",
                     downloadUrl: "documents/web-dev-guide.docx",
-                    type: "docx"
+                    type: "docx",
+                    tags: ["web", "development", "tutorial"]
                 },
                 {
                     id: 'doc-3',
@@ -506,7 +602,8 @@
                     pages: "N/A",
                     date: "2023-07-15",
                     downloadUrl: "documents/financial-report-q2-2023.xlsx",
-                    type: "xlsx"
+                    type: "xlsx",
+                    tags: ["finance", "quarterly", "report"]
                 },
                 {
                     id: 'doc-4',
@@ -517,7 +614,8 @@
                     pages: 24,
                     date: "2023-06-22",
                     downloadUrl: "documents/ml-presentation.pptx",
-                    type: "pptx"
+                    type: "pptx",
+                    tags: ["AI", "machine learning", "presentation"]
                 },
                 {
                     id: 'doc-5',
@@ -528,7 +626,8 @@
                     pages: "N/A",
                     date: "2023-04-05",
                     downloadUrl: "documents/mediterranean-recipes.txt",
-                    type: "txt"
+                    type: "txt",
+                    tags: ["cooking", "recipes", "mediterranean"]
                 },
                 {
                     id: 'doc-6',
@@ -539,43 +638,49 @@
                     pages: 56,
                     date: "2023-03-18",
                     downloadUrl: "documents/js-patterns.pdf",
-                    type: "pdf"
+                    type: "pdf",
+                    tags: ["javascript", "patterns", "programming"]
+                },
+                {
+                    id: 'doc-7',
+                    title: "System Architecture Documentation",
+                    description: "Complete system architecture with Mermaid diagrams showing component relationships.",
+                    category: "technical",
+                    size: "0.5 MB",
+                    pages: "N/A",
+                    date: "2023-08-10",
+                    downloadUrl: "documents/system-architecture.md",
+                    type: "md",
+                    tags: ["architecture", "mermaid", "documentation"]
                 }
             ];
         }
 
         // Generate RSS feed automatically
         function generateRSSFeed() {
-            // This would typically be done server-side, but for GitHub Pages
-            // we'll create a function that generates the feed content
-            // In practice, you'd run this as part of your build process
-
             const feedContent = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
     <title>Document Library Updates</title>
-    <link>https://yourusername.github.io/your-repo/</link>
+    <link>https://ujas-dev.github.io/free-books/</link>
     <description>New documents added to the library</description>
     <language>en-us</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
-    <atom:link href="https://yourusername.github.io/your-repo/feed.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="https://ujas-dev.github.io/free-books/feed.xml" rel="self" type="application/rss+xml"/>
 
     ${state.allDocuments.slice(0, 10).map(doc => `
     <item>
         <title>${escapeXml(doc.title)}</title>
-        <link>https://yourusername.github.io/your-repo/</link>
+        <link>https://ujas-dev.github.io/free-books/</link>
         <description>${escapeXml(doc.description)}</description>
         <pubDate>${new Date(doc.date).toUTCString()}</pubDate>
-        <guid>https://yourusername.github.io/your-repo/#${doc.id}</guid>
+        <guid>https://ujas-dev.github.io/free-books/#${doc.id}</guid>
     </item>
     `).join('')}
 </channel>
 </rss>`;
 
-            // In a real build process, you would write this to feed.xml
             console.log('Generated RSS feed content (save to feed.xml):', feedContent);
-
-            // Also generate sitemap
             generateSitemap();
         }
 
@@ -584,14 +689,14 @@
             const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://yourusername.github.io/your-repo/</loc>
+        <loc>https://ujas-dev.github.io/free-books/</loc>
         <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     ${state.allDocuments.map(doc => `
     <url>
-        <loc>https://yourusername.github.io/your-repo/</loc>
+        <loc>https://ujas-dev.github.io/free-books/</loc>
         <lastmod>${doc.date}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -669,6 +774,26 @@
             renderDocuments();
         }
 
+        // Toggle view mode
+        function toggleViewMode() {
+            state.viewMode = state.viewMode === 'grid' ? 'list' : 'grid';
+            localStorage.setItem('viewMode', state.viewMode);
+            updateViewModeButton();
+            renderDocuments();
+        }
+
+        // Update view mode button icon
+        function updateViewModeButton() {
+            const icon = document.querySelector('#viewModeToggle i');
+            if (state.viewMode === 'grid') {
+                icon.className = 'fas fa-th-large';
+                icon.parentElement.setAttribute('aria-label', 'Switch to list view');
+            } else {
+                icon.className = 'fas fa-list';
+                icon.parentElement.setAttribute('aria-label', 'Switch to grid view');
+            }
+        }
+
         // Get unique categories
         function getUniqueCategories(docs) {
             const categories = new Set(docs.map(doc => doc.category));
@@ -687,7 +812,7 @@
             `).join('');
         }
 
-        // Render documents with pagination and favorites view
+        // Render documents with grid/list view support
         function renderDocuments() {
             let filteredDocs;
 
@@ -697,7 +822,8 @@
                 filteredDocs = state.allDocuments.filter(doc => {
                     const matchesSearch = doc.title.toLowerCase().includes(state.searchTerm) ||
                                          doc.description.toLowerCase().includes(state.searchTerm) ||
-                                         doc.category.toLowerCase().includes(state.searchTerm);
+                                         doc.category.toLowerCase().includes(state.searchTerm) ||
+                                         (doc.tags && doc.tags.some(tag => tag.toLowerCase().includes(state.searchTerm)));
 
                     const matchesCategory = state.activeCategory === 'all' || doc.category === state.activeCategory;
 
@@ -711,9 +837,12 @@
             const startIndex = (state.currentPage - 1) * state.itemsPerPage;
             const paginatedDocs = filteredDocs.slice(startIndex, startIndex + state.itemsPerPage);
 
+            // Set container class based on view mode
+            documentsContainer.className = state.viewMode === 'grid' ? 'pdf-grid' : 'pdf-list';
+
             if (paginatedDocs.length === 0) {
                 if (state.viewingFavorites) {
-                    pdfGrid.innerHTML = `
+                    documentsContainer.innerHTML = `
                         <div class="empty-state" role="status" aria-live="polite">
                             <i class="fas fa-star" aria-hidden="true"></i>
                             <h3>No favorites yet</h3>
@@ -724,38 +853,84 @@
                     renderEmptyState();
                 }
             } else {
-                pdfGrid.innerHTML = paginatedDocs.map((doc, index) => `
-                    <article class="pdf-card" data-category="${doc.category}" data-title="${doc.title}" data-date="${doc.date}" data-size="${doc.size}">
-                        <div class="pdf-icon ${getDocIconClass(doc.type)}">
-                            <button class="favorite-btn ${state.favorites.has(doc.id) ? 'favorited' : ''}"
-                                    data-doc-id="${doc.id}"
-                                    title="Add to favorites"
-                                    aria-label="${state.favorites.has(doc.id) ? 'Remove from favorites' : 'Add to favorites'}">
-                                <i class="fas fa-star" aria-hidden="true"></i>
-                            </button>
-                            <i class="fas ${getDocIcon(doc.type)}" aria-hidden="true"></i>
-                        </div>
-                        <div class="pdf-content">
-                            <h3 class="pdf-title">${escapeHtml(doc.title)}</h3>
-                            <div class="pdf-meta">
-                                <span>${doc.pages} ${doc.type === 'xlsx' || doc.type === 'txt' ? 'rows/lines' : 'pages'}</span>
-                                <span>${doc.size}</span>
-                            </div>
-                            <span class="pdf-category">${formatCategory(doc.category)}</span>
-                            <p class="pdf-description">${escapeHtml(doc.description)}</p>
-                            <div class="pdf-actions">
-                                <a href="${doc.downloadUrl}" class="btn btn-primary download-btn" data-title="${doc.title}" data-type="${doc.type}" download
-                                   aria-label="Download ${doc.title}">
-                                    <i class="fas fa-download" aria-hidden="true"></i> Download
-                                </a>
-                                <button class="btn btn-outline preview-btn" data-url="${doc.downloadUrl}" data-title="${doc.title}" data-type="${doc.type}"
-                                        aria-label="Preview ${doc.title}">
-                                    <i class="fas fa-eye" aria-hidden="true"></i> Preview
+                if (state.viewMode === 'grid') {
+                    documentsContainer.innerHTML = paginatedDocs.map((doc, index) => `
+                        <article class="pdf-card" data-category="${doc.category}" data-title="${doc.title}" data-date="${doc.date}" data-size="${doc.size}">
+                            <div class="pdf-icon ${getDocIconClass(doc.type)}">
+                                <button class="favorite-btn ${state.favorites.has(doc.id) ? 'favorited' : ''}"
+                                        data-doc-id="${doc.id}"
+                                        title="Add to favorites"
+                                        aria-label="${state.favorites.has(doc.id) ? 'Remove from favorites' : 'Add to favorites'}">
+                                    <i class="fas fa-star" aria-hidden="true"></i>
                                 </button>
+                                <i class="fas ${getDocIcon(doc.type)}" aria-hidden="true"></i>
                             </div>
-                        </div>
-                    </article>
-                `).join('');
+                            <div class="pdf-content">
+                                <h3 class="pdf-title">${escapeHtml(doc.title)}</h3>
+                                <div class="pdf-meta">
+                                    <span>${doc.pages} ${doc.type === 'xlsx' || doc.type === 'txt' || doc.type === 'md' ? 'rows/lines' : 'pages'}</span>
+                                    <span>${doc.size}</span>
+                                </div>
+                                <span class="pdf-category">${formatCategory(doc.category)}</span>
+                                <p class="pdf-description">${escapeHtml(doc.description)}</p>
+                                ${doc.tags && doc.tags.length > 0 ?
+                                    `<div style="margin: 0.5rem 0;">
+                                        ${doc.tags.map(tag => `<span class="tag">${escapeHtml(tag)}</span>`).join('')}
+                                    </div>` : ''}
+                                <div class="pdf-actions">
+                                    <a href="${doc.downloadUrl}" class="btn btn-primary download-btn" data-title="${doc.title}" data-type="${doc.type}" download
+                                       aria-label="Download ${doc.title}">
+                                        <i class="fas fa-download" aria-hidden="true"></i> Download
+                                    </a>
+                                    <button class="btn btn-outline preview-btn" data-url="${doc.downloadUrl}" data-title="${doc.title}" data-type="${doc.type}"
+                                            aria-label="Preview ${doc.title}">
+                                        <i class="fas fa-eye" aria-hidden="true"></i> Preview
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    `).join('');
+                } else {
+                    // List view
+                    documentsContainer.innerHTML = paginatedDocs.map((doc, index) => `
+                        <article class="pdf-card pdf-list-item" data-category="${doc.category}" data-title="${doc.title}" data-date="${doc.date}" data-size="${doc.size}">
+                            <div class="list-icon ${getDocIconClass(doc.type)}" style="display:flex;align-items:center;justify-content:center;">
+                                <i class="fas ${getDocIcon(doc.type)}" aria-hidden="true" style="font-size:2rem;color:white;"></i>
+                            </div>
+                            <div class="list-content">
+                                <h3 class="list-title">${escapeHtml(doc.title)}</h3>
+                                <div class="list-meta">
+                                    <span><i class="fas fa-folder"></i> ${formatCategory(doc.category)}</span>
+                                    <span><i class="fas fa-file"></i> ${doc.type.toUpperCase()}</span>
+                                    <span><i class="fas fa-calendar"></i> ${doc.date}</span>
+                                    <span><i class="fas fa-hdd"></i> ${doc.size}</span>
+                                </div>
+                                <p style="color:var(--text-secondary);margin-bottom:0.5rem;">${escapeHtml(doc.description)}</p>
+                                ${doc.tags && doc.tags.length > 0 ?
+                                    `<div style="margin-bottom:0.5rem;">
+                                        ${doc.tags.map(tag => `<span class="tag">${escapeHtml(tag)}</span>`).join('')}
+                                    </div>` : ''}
+                                <div class="list-actions">
+                                    <button class="favorite-btn ${state.favorites.has(doc.id) ? 'favorited' : ''}"
+                                            data-doc-id="${doc.id}"
+                                            title="Add to favorites"
+                                            aria-label="${state.favorites.has(doc.id) ? 'Remove from favorites' : 'Add to favorites'}"
+                                            style="width:32px;height:32px;border-radius:50%;background:rgba(67,97,238,0.1);border:none;color:var(--primary);display:flex;align-items:center;justify-content:center;margin-right:0.5rem;">
+                                        <i class="fas fa-star" aria-hidden="true" style="font-size:0.8rem;"></i>
+                                    </button>
+                                    <a href="${doc.downloadUrl}" class="btn btn-primary download-btn" data-title="${doc.title}" data-type="${doc.type}" download
+                                       aria-label="Download ${doc.title}" style="flex:0 0 auto;padding:0.4rem 0.8rem;font-size:0.9rem;">
+                                        <i class="fas fa-download" aria-hidden="true"></i>
+                                    </a>
+                                    <button class="btn btn-outline preview-btn" data-url="${doc.downloadUrl}" data-title="${doc.title}" data-type="${doc.type}"
+                                            aria-label="Preview ${doc.title}" style="flex:0 0 auto;padding:0.4rem 0.8rem;font-size:0.9rem;">
+                                        <i class="fas fa-eye" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    `).join('');
+                }
             }
 
             renderPagination(totalPages);
@@ -764,7 +939,7 @@
 
         // Render empty state
         function renderEmptyState() {
-            pdfGrid.innerHTML = `
+            documentsContainer.innerHTML = `
                 <div class="empty-state" role="status" aria-live="polite">
                     <i class="fas fa-file-search" aria-hidden="true"></i>
                     <h3>No documents found</h3>
@@ -862,6 +1037,8 @@
 
                 if (type === 'pdf') {
                     await previewPDF(url);
+                } else if (type === 'md') {
+                    await previewMarkdown(url);
                 } else if (type === 'docx' || type === 'xlsx' || type === 'pptx' || type === 'txt') {
                     await previewOfficeDocument(url, type);
                 } else {
@@ -924,12 +1101,55 @@
             }
         }
 
-        // Preview Office documents (simplified - in reality would need server-side conversion)
-        async function previewOfficeDocument(url, type) {
-            // For GitHub Pages, we can't convert Office docs to HTML directly
-            // This is a placeholder that shows document info
-            // In a real implementation, you'd use a service like Google Docs Viewer or Microsoft Office Online
+        // Preview Markdown documents with Mermaid support
+        async function previewMarkdown(url) {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error('Failed to load Markdown file');
 
+                const markdownText = await response.text();
+                const htmlContent = marked.parse ? marked.parse(markdownText) : convertMarkdownToHtml(markdownText);
+
+                documentViewer.innerHTML = `<div class="markdown-content">${htmlContent}</div>`;
+
+                // Initialize Mermaid diagrams
+                setTimeout(() => {
+                    try {
+                        mermaid.init();
+                    } catch (e) {
+                        console.warn('Mermaid initialization failed:', e);
+                    }
+                }, 100);
+
+            } catch (error) {
+                documentViewer.innerHTML = `
+                    <div style="padding: 20px; color: #f87171;">
+                        <i class="fas fa-exclamation-triangle" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                        <p>Error loading Markdown file: ${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Simple Markdown to HTML converter (fallback if marked.js not available)
+        function convertMarkdownToHtml(markdown) {
+            let html = markdown
+                .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+                .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+                .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+                .replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>')
+                .replace(/\*(.*?)\*/gim, '<em>$1</em>')
+                .replace(/^- (.*$)/gim, '<li>$1</li>')
+                .replace(/<\/li>\s*<li>/g, '</li><li>')
+                .replace(/(<li>.*<\/li>)/g, '<ul>$1</ul>')
+                .replace(/\[(.*?)\]\((.*?)\)/gim, '<a href="$2" target="_blank">$1</a>')
+                .replace(/\n/g, '<br>');
+
+            return html;
+        }
+
+        // Preview Office documents
+        async function previewOfficeDocument(url, type) {
             const fileTypeNames = {
                 'docx': 'Word Document',
                 'xlsx': 'Excel Spreadsheet',
@@ -1045,6 +1265,7 @@
             });
 
             themeToggle.addEventListener('click', toggleTheme);
+            viewModeToggle.addEventListener('click', toggleViewMode);
 
             if (viewFavoritesBtn) {
                 viewFavoritesBtn.addEventListener('click', (e) => {
@@ -1069,6 +1290,13 @@
                     }
                 });
             }
+
+            // Initialize view mode from localStorage
+            const savedViewMode = localStorage.getItem('viewMode');
+            if (savedViewMode) {
+                state.viewMode = savedViewMode;
+                updateViewModeButton();
+            }
         }
 
         // Format category for display
@@ -1080,23 +1308,28 @@
                 'guide': 'Guide',
                 'report': 'Report',
                 'research': 'Research',
-                'other': 'Other'
+                'other': 'Other',
+                'technical': 'Technical'
             };
             return categoryMap[category] || category.charAt(0).toUpperCase() + category.slice(1);
         }
 
-        // Sort documents
+        // Sort documents with additional sorting options
         function sortDocuments(docs, sortBy) {
             return [...docs].sort((a, b) => {
                 switch (sortBy) {
                     case 'title':
                         return a.title.localeCompare(b.title);
                     case 'date':
-                        return new Date(b.date) - new Date(a.date);
+                        return new Date(b.date) - new Date(a.date); // Newest first
                     case 'size':
                         const sizeA = parseFloat(a.size) || 0;
                         const sizeB = parseFloat(b.size) || 0;
-                        return sizeB - sizeA;
+                        return sizeB - sizeA; // Largest first
+                    case 'category':
+                        return a.category.localeCompare(b.category);
+                    case 'type':
+                        return a.type.localeCompare(b.type);
                     default:
                         return 0;
                 }
