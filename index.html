@@ -719,7 +719,7 @@
                 state.error = null;
                 renderLoadingState();
 
-                const response = await fetch('documents.json?_=' + Date.now());
+                const response = await fetch('documents.json');
                 if (response.ok) {
                     const data = await response.json();
                     state.allDocuments = data.map((doc, index) => ({
