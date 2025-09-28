@@ -1,0 +1,24 @@
+[
+  {
+    "id": "1",
+    "title": "Sample PDF",
+    "description": "Demo PDF",
+    "category": "demo",
+    "size": "150 KB",
+    "pages": 4,
+    "date": "2023-05-15",
+    "downloadUrl": "documents/file-sample_150kB.pdf",
+    "tags": ["demo files"]
+  },
+  {
+    "id": "2",
+    "title": "Sample DOC",
+    "description": "Demo DOC",
+    "category": "demo",
+    "size": "100 KB",
+    "pages": 4,
+    "date": "2023-05-15",
+    "downloadUrl": "documents/file-sample_100kB.doc",
+    "tags": ["demo files"]
+  }
+]
